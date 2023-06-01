@@ -28,6 +28,7 @@ jobs:
       - name: Checkout HEAD ref of the PR
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
         with:
+          ref: ${{ github.event.pull_request.head.sha }}
           path: ${{ github.repository_owner }}
 
       # checkout the base ref of the PR
