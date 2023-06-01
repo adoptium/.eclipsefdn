@@ -191,7 +191,7 @@ orgs.newOrg('adoptium') {
         allow_update_branch: false,
         default_branch: "master",
         description: "Home of test infrastructure for Adoptium builds",
-        homepage: "",
+        homepage: "https://adoptium.net/aqavit",
         topics+: [
           "hacktoberfest",
           "openjdk-tests",
