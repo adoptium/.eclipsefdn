@@ -22,7 +22,7 @@ orgs.newOrg('adoptium') {
       orgs.newRepo('.eclipsefdn-private') {
         allow_forking: false,
         archived: true,
-        description: "Repository to host configurations related to the Eclipse Foundation.",
+        description: "Repository to host configurations related to the Eclipse Foundation. blabla",
         has_projects: false,
         has_wiki: false,
         private: true,
