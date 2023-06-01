@@ -3,7 +3,7 @@ local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
 orgs.newOrg('adoptium') {
     settings+: {
-      blog: "https://adoptium.net",
+      blog: "https://adoptium1.net",
       default_repository_permission: "none",
       default_workflow_permissions: "write",
       description: "The Adoptium Working Group promotes and supports high-quality runtimes and associated technology for use across the Java ecosystem",
