@@ -25,6 +25,9 @@ jobs:
           path: otterdog-configs
 
       # checkout the head ref of the PR
+      # NOTE: in general it is bad practice to check out the pull request HEAD for PRs originating from forked repos,
+      #       however, this validation workflow produces a diff between the changes in the PR with the base ref, thus
+      #       doing this is acceptable, see https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
       - name: Checkout HEAD ref of the PR
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
         with:
