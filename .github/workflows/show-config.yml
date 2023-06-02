@@ -2,6 +2,11 @@ name: Show Otterdog Configuration
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'otterdog/**'
 
 permissions:
   contents: read
