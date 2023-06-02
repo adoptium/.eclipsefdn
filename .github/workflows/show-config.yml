@@ -21,7 +21,7 @@ jobs:
           repository: EclipseFdn/otterdog-configs
           path: otterdog-configs
 
-      # checkout the head ref
+      # checkout the HEAD ref
       - name: Checkout HEAD
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
         with:
@@ -45,6 +45,12 @@ jobs:
         run: |
           poetry install --only=main
         working-directory: otterdog
+
+      - name: Copy configuration from HEAD ref
+        run: |
+          mkdir orgs
+          cp -r ../${{ github.repository_owner }}/otterdog/* orgs/
+        working-directory: otterdog-configs
 
       - name: Show complete Otterdog Configuration
         run: |
