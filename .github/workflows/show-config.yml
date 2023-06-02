@@ -53,8 +53,11 @@ jobs:
         working-directory: otterdog-configs
 
       - name: Show complete Otterdog Configuration
-        run: |
-          # use script to enable ansi color output
-          script -q /dev/null --command "../otterdog/otterdog.sh show ${{ github.repository_owner }} -c otterdog.json"
+        run: ../otterdog/otterdog.sh show ${{ github.repository_owner }} -c otterdog.json | tee "$GITHUB_WORKSPACE/config.txt"
         working-directory: otterdog-configs
 
+      - name: Upload config.txt
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2
+        with:
+          name: Otterdog config
+          path: config.txt
