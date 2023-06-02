@@ -6,7 +6,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'otterdog/**'
+      - 'otterdog/*.jsonnet'
 
 permissions:
   contents: read
