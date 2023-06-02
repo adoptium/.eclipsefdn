@@ -1,0 +1,54 @@
+name: Show Otterdog Configuration
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  show:
+    # do not run the workflow in the template repo itself
+    if: ${{ !contains (github.repository, '/.eclipsefdn-private-template') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout OtterDog
+        run: git clone https://gitlab.eclipse.org/eclipsefdn/security/otterdog.git
+
+      - name: Checkout EclipseFdn/otterdog-configs
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        with:
+          repository: EclipseFdn/otterdog-configs
+          path: otterdog-configs
+
+      # checkout the head ref
+      - name: Checkout HEAD
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        with:
+          path: ${{ github.repository_owner }}
+
+      - name: Install jsonnet-bundler
+        run: |
+          go install -a github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb@v0.5.1
+          echo $(go env GOPATH)/bin >> $GITHUB_PATH
+
+      - name: Install poetry
+        run: pipx install poetry
+
+      - name: Setup Python
+        uses: actions/setup-python@bd6b4b6205c4dbad673328db7b31b7fab9e241c0 # v4.6.1
+        with:
+          python-version: '3.10'
+          cache: 'poetry'
+
+      - name: Install dependencies with poetry
+        run: |
+          poetry install --only=main
+        working-directory: otterdog
+
+      - name: Show complete Otterdog Configuration
+        run: |
+          # use script to enable ansi color output
+          script -q /dev/null --command "../otterdog/otterdog.sh show ${{ github.repository_owner }} -c otterdog.json"
+        working-directory: otterdog-configs
+
