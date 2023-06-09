@@ -12,7 +12,7 @@ permissions:
 jobs:
   validate:
     # do not run the workflow in the template repo itself
-    if: ${{ !contains (github.repository, '/.eclipsefdn-private-template') }}
+    if: ${{ !contains (github.repository, '/.eclipsefdn-template') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout OtterDog
