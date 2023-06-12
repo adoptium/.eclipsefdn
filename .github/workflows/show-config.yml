@@ -7,6 +7,7 @@ on:
       - 'main'
     paths:
       - 'otterdog/*.jsonnet'
+      - 'otterdog/*.json'
 
 permissions:
   contents: read
@@ -53,8 +54,8 @@ jobs:
 
       - name: Copy configuration from HEAD ref
         run: |
-          mkdir orgs
-          cp -r ../${{ github.repository_owner }}/otterdog/* orgs/
+          mkdir -p orgs/${{ github.repository_owner }}
+          cp -r ../${{ github.repository_owner }}/otterdog/* orgs/${{ github.repository_owner }}
         working-directory: otterdog-configs
 
       - name: Show complete Otterdog Configuration
