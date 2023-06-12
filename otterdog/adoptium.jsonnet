@@ -18,6 +18,18 @@ orgs.newOrg('adoptium') {
       twitter_username: "adoptium",
       web_commit_signoff_required: false,
     },
+    webhooks+: [
+      orgs.newWebhook() {
+        content_type: "json",
+        events+: [
+          "meta",
+          "organization",
+          "repository"
+        ],
+        secret: "********",
+        url: "https://app.codacy.com/2.0/events/gh/organization",
+      },
+    ],
     _repositories+:: [
       orgs.newRepo('.eclipsefdn-private') {
         allow_forking: false,
@@ -459,6 +471,12 @@ orgs.newOrg('adoptium') {
         allow_update_branch: false,
         default_branch: "master",
         secret_scanning: "disabled",
+        secret_scanning_push_protection: "disabled",
+        web_commit_signoff_required: false,
+      },
+      orgs.newRepo('jdk21') {
+        allow_update_branch: false,
+        default_branch: "master",
         secret_scanning_push_protection: "disabled",
         web_commit_signoff_required: false,
       },
