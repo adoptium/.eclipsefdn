@@ -60,11 +60,11 @@ jobs:
           poetry install --only=main
         working-directory: otterdog
 
-      - name: Copy configuration from BASE ref
+      - name: Copy configuration from HEAD and BASE ref
         run: |
-          mkdir orgs
-          cp -r ../${{ github.repository_owner }}/otterdog/* orgs/
-          cp ../${{ github.repository_owner }}-base/otterdog/${{ github.repository_owner }}.jsonnet orgs/${{ github.repository_owner }}.jsonnet-BASE 
+          mkdir -p orgs/${{ github.repository_owner }}
+          cp -r ../${{ github.repository_owner }}/otterdog/* orgs/${{ github.repository_owner }}
+          cp ../${{ github.repository_owner }}-base/otterdog/${{ github.repository_owner }}.jsonnet orgs/${{ github.repository_owner }}/${{ github.repository_owner }}.jsonnet-BASE 
         working-directory: otterdog-configs
 
       - name: Validate Otterdog Configuration and diff HEAD <-> BASE
