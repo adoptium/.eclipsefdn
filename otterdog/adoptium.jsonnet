@@ -369,13 +369,15 @@ orgs.newOrg('adoptium') {
       ],
       web_commit_signoff_required: false,
       webhooks: [
-        orgs.newRepoWebhook('https://ci.adoptopenjdk.net/ghprbhook/') {
+        orgs.newRepoWebhook('https://ci.adoptium.net/ghprbhook/') {
+          aliases: [
+            "https://ci.adoptopenjdk.net/ghprbhook/"
+          ],
           events+: [
             "issue_comment",
             "pull_request"
           ],
-          insecure_ssl: "1",
-          secret: "********",
+          secret: "pass:bots/adoptium/github.com/ci-webhook-secret",
         },
         orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
           content_type: "json",
@@ -517,8 +519,11 @@ orgs.newOrg('adoptium') {
       ],
       web_commit_signoff_required: false,
       webhooks: [
-        orgs.newRepoWebhook('https://ci.adoptopenjdk.net/github-webhook/') {
+        orgs.newRepoWebhook('https://ci.adoptium.net/github-webhook/') {
           active: false,
+          aliases: [
+            "https://ci.adoptopenjdk.net/github-webhook/"
+          ],
           events+: [
             "commit_comment",
             "issue_comment",
@@ -529,13 +534,6 @@ orgs.newOrg('adoptium') {
             "pull_request_review_comment",
             "push"
           ],
-        },
-        orgs.newRepoWebhook('https://ci.adoptopenjdk.net/ghprbhook/') {
-          events+: [
-            "issue_comment",
-            "pull_request"
-          ],
-          secret: "********",
         },
         orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
           content_type: "json",
@@ -559,7 +557,7 @@ orgs.newOrg('adoptium') {
             "issue_comment",
             "pull_request"
           ],
-          secret: "********",
+          secret: "pass:bots/adoptium/github.com/ci-webhook-secret",
         },
       ],
       branch_protection_rules: [
@@ -774,7 +772,10 @@ orgs.newOrg('adoptium') {
       ],
       web_commit_signoff_required: false,
       webhooks: [
-        orgs.newRepoWebhook('https://ci.adoptopenjdk.net/github-webhook/') {
+        orgs.newRepoWebhook('https://ci.adoptium.net/github-webhook/') {
+          aliases: [
+            "https://ci.adoptopenjdk.net/github-webhook/"
+          ],
           events+: [
             "push"
           ],
@@ -1149,7 +1150,7 @@ orgs.newOrg('adoptium') {
       default_branch: "master",
       dependabot_alerts_enabled: false,
       description: "OpenJDK source mirroring scripts used by",
-      homepage: "https://ci.adoptopenjdk.net/view/git-mirrors/job/git-mirrors/job/adoptium/",
+      homepage: "https://ci.adoptium.net/view/git-mirrors/job/git-mirrors/job/adoptium/",
       web_commit_signoff_required: false,
       webhooks: [
         orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
@@ -1272,7 +1273,10 @@ orgs.newOrg('adoptium') {
             "repository"
           ],
         },
-        orgs.newRepoWebhook('https://ci.adoptopenjdk.net/github-webhook/') {
+        orgs.newRepoWebhook('https://ci.adoptium.net/github-webhook/') {
+          aliases: [
+            "https://ci.adoptopenjdk.net/github-webhook/"
+          ],
           events+: [
             "commit_comment",
             "issue_comment",
@@ -1292,12 +1296,15 @@ orgs.newOrg('adoptium') {
           ],
           secret: "********",
         },
-        orgs.newRepoWebhook('https://ci.adoptopenjdk.net/ghprbhook/') {
+        orgs.newRepoWebhook('https://ci.adoptium.net/ghprbhook/') {
+          aliases: [
+            "https://ci.adoptopenjdk.net/ghprbhook/"
+          ],
           events+: [
             "issue_comment",
             "pull_request"
           ],
-          secret: "********",
+          secret: "pass:bots/adoptium/github.com/ci-webhook-secret",
         },
         orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
           content_type: "json",
