@@ -370,9 +370,6 @@ orgs.newOrg('adoptium') {
       web_commit_signoff_required: false,
       webhooks: [
         orgs.newRepoWebhook('https://ci.adoptium.net/ghprbhook/') {
-          aliases: [
-            "https://ci.adoptopenjdk.net/ghprbhook/"
-          ],
           events+: [
             "issue_comment",
             "pull_request"
@@ -521,9 +518,6 @@ orgs.newOrg('adoptium') {
       webhooks: [
         orgs.newRepoWebhook('https://ci.adoptium.net/github-webhook/') {
           active: false,
-          aliases: [
-            "https://ci.adoptopenjdk.net/github-webhook/"
-          ],
           events+: [
             "commit_comment",
             "issue_comment",
@@ -773,9 +767,6 @@ orgs.newOrg('adoptium') {
       web_commit_signoff_required: false,
       webhooks: [
         orgs.newRepoWebhook('https://ci.adoptium.net/github-webhook/') {
-          aliases: [
-            "https://ci.adoptopenjdk.net/github-webhook/"
-          ],
           events+: [
             "push"
           ],
@@ -1274,9 +1265,6 @@ orgs.newOrg('adoptium') {
           ],
         },
         orgs.newRepoWebhook('https://ci.adoptium.net/github-webhook/') {
-          aliases: [
-            "https://ci.adoptopenjdk.net/github-webhook/"
-          ],
           events+: [
             "commit_comment",
             "issue_comment",
@@ -1297,9 +1285,6 @@ orgs.newOrg('adoptium') {
           secret: "********",
         },
         orgs.newRepoWebhook('https://ci.adoptium.net/ghprbhook/') {
-          aliases: [
-            "https://ci.adoptopenjdk.net/ghprbhook/"
-          ],
           events+: [
             "issue_comment",
             "pull_request"
