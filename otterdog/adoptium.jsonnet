@@ -18,7 +18,7 @@ orgs.newOrg('adoptium') {
     web_commit_signoff_required: false,
   },
   webhooks+: [
-    orgs.newWebhook() {
+    orgs.newOrgWebhook('https://app.codacy.com/2.0/events/gh/organization') {
       content_type: "json",
       events+: [
         "meta",
@@ -26,7 +26,6 @@ orgs.newOrg('adoptium') {
         "repository"
       ],
       secret: "********",
-      url: "https://app.codacy.com/2.0/events/gh/organization",
     },
   ],
   _repositories+:: [
@@ -62,6 +61,25 @@ orgs.newOrg('adoptium') {
       description: "The System Test Framework for executing https://github.com/adoptium/aqa-systemtest",
       homepage: "",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('TKG') {
       allow_update_branch: false,
@@ -69,6 +87,25 @@ orgs.newOrg('adoptium') {
       description: "TestKitGen (TKG)",
       homepage: "",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -87,6 +124,25 @@ orgs.newOrg('adoptium') {
       description: "Mirror of the Mercurial Forest for the Linux Aarch32 port from",
       homepage: "https://hg.openjdk.java.net/aarch32-port/jdk8u",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('adoptium') {
       allow_update_branch: false,
@@ -100,6 +156,25 @@ orgs.newOrg('adoptium') {
         "temurin"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('adoptium-support') {
       allow_merge_commit: false,
@@ -107,6 +182,25 @@ orgs.newOrg('adoptium') {
       default_branch: "master",
       description: "For end-user problems reported with our binary distributions",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('adoptium.net') {
       allow_auto_merge: true,
@@ -153,6 +247,25 @@ orgs.newOrg('adoptium') {
         "temurin"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('marketplace') {
           required_approving_review_count: 1,
@@ -188,6 +301,25 @@ orgs.newOrg('adoptium') {
       default_branch: "master",
       description: "Java load testing and other full system application tests",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('aqa-test-tools') {
       allow_merge_commit: false,
@@ -196,6 +328,33 @@ orgs.newOrg('adoptium') {
       description: "Home of Test Results Summary Service (TRSS) and PerfNext.  These tools are designed to improve our ability to monitor and triage tests at the Adoptium project.  The code is generic enough that it is extensible for use by any project that needs to monitor multiple CI servers and aggregate their results.",
       homepage: "",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://snyk.io/webhook/github/7deaca9e-6f61-4599-b985-655b7065663a') {
+          content_type: "json",
+          events+: [
+            "pull_request",
+            "push"
+          ],
+          secret: "********",
+        },
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('aqa-tests') {
       allow_merge_commit: false,
@@ -209,6 +368,33 @@ orgs.newOrg('adoptium') {
         "tests"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://ci.adoptopenjdk.net/ghprbhook/') {
+          events+: [
+            "issue_comment",
+            "pull_request"
+          ],
+          insecure_ssl: "1",
+          secret: "********",
+        },
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
         orgs.newBranchProtectionRule('*-release') {
@@ -228,6 +414,25 @@ orgs.newOrg('adoptium') {
         "openjdk"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -245,6 +450,25 @@ orgs.newOrg('adoptium') {
       default_branch: "master",
       description: "Github action for building JDKs that utilizes the build scripts from the openjdk-build repo",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('bumblebench') {
       allow_merge_commit: false,
@@ -258,6 +482,25 @@ orgs.newOrg('adoptium') {
         "performance"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('ci-jenkins-pipelines') {
       allow_auto_merge: true,
@@ -273,6 +516,52 @@ orgs.newOrg('adoptium') {
         "pipeline"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://ci.adoptopenjdk.net/github-webhook/') {
+          active: false,
+          events+: [
+            "commit_comment",
+            "issue_comment",
+            "issues",
+            "label",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "push"
+          ],
+        },
+        orgs.newRepoWebhook('https://ci.adoptopenjdk.net/ghprbhook/') {
+          events+: [
+            "issue_comment",
+            "pull_request"
+          ],
+          secret: "********",
+        },
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+        orgs.newRepoWebhook('https://ci.adoptium.net/ghprbhook/') {
+          events+: [
+            "issue_comment",
+            "pull_request"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -295,6 +584,25 @@ orgs.newOrg('adoptium') {
         "hacktoberfest"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_status_checks+: [
@@ -317,6 +625,25 @@ orgs.newOrg('adoptium') {
         "react"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('documentation') {
       archived: true,
@@ -327,10 +654,45 @@ orgs.newOrg('adoptium') {
         "hacktoberfest"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+        orgs.newRepoWebhook('https://app.codacy.com/events/github/3b0e019a32bb4307a776e60cff5b031c') {
+          content_type: "json",
+          events+: [
+            "pull_request",
+            "push"
+          ],
+        },
+      ],
     },
     orgs.newRepo('documentation-services') {
       archived: true,
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://app.codacy.com/events/github/695d0c3446bd42d58c11a7ee026d9196') {
+          content_type: "json",
+          events+: [
+            "pull_request",
+            "push"
+          ],
+        },
+      ],
     },
     orgs.newRepo('emt4j') {
       allow_update_branch: false,
@@ -338,6 +700,14 @@ orgs.newOrg('adoptium') {
       dependabot_alerts_enabled: false,
       description: "Eclipse Migration Toolkit for Java",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://oapi.dingtalk.com/robot/send?access_token=ffc24f077919df275c7250e56a3a32b93e6a906a69665a29f1f8b4ba45e5498e') {
+          content_type: "json",
+          events+: [
+            "issues"
+          ],
+        },
+      ],
     },
     orgs.newRepo('github-release-scripts') {
       allow_merge_commit: false,
@@ -349,6 +719,41 @@ orgs.newOrg('adoptium') {
         "github"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://snyk.io/webhook/github') {
+          content_type: "json",
+          events+: [
+            "pull_request",
+            "push"
+          ],
+          secret: "********",
+        },
+        orgs.newRepoWebhook('https://snyk.io/webhook/github/6e4772c5-93c0-42cf-b98e-650ed3abcf5b') {
+          content_type: "json",
+          events+: [
+            "pull_request",
+            "push"
+          ],
+          secret: "********",
+        },
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -368,6 +773,30 @@ orgs.newOrg('adoptium') {
         "nagios"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://ci.adoptopenjdk.net/github-webhook/') {
+          events+: [
+            "push"
+          ],
+        },
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -384,6 +813,25 @@ orgs.newOrg('adoptium') {
         "installer"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -395,6 +843,25 @@ orgs.newOrg('adoptium') {
       description: "JDK mirror from https://github.com/openjdk/jdk",
       homepage: "",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('jdk11u') {
       allow_update_branch: false,
@@ -403,6 +870,25 @@ orgs.newOrg('adoptium') {
       description: "JDK11u mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk11u. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
       homepage: "",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('jdk11u-fast-startup-incubator') {
       allow_update_branch: false,
@@ -417,6 +903,25 @@ orgs.newOrg('adoptium') {
       description: "JDK16u mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk16u. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
       homepage: "",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('jdk17') {
       archived: true,
@@ -424,6 +929,25 @@ orgs.newOrg('adoptium') {
       description: "JDK17 mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk17. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead, use the tested and certified Java SE compatible version of the code that is available at https://www.adoptium.net.",
       homepage: "",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('jdk17u') {
       allow_update_branch: false,
@@ -495,6 +1019,25 @@ orgs.newOrg('adoptium') {
       description: "JDK8u mirror from mercurial from",
       homepage: "http://hg.openjdk.java.net/jdk8u/jdk8u/",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('jenkins-helper') {
       allow_merge_commit: false,
@@ -509,6 +1052,25 @@ orgs.newOrg('adoptium') {
         "jenkins-helper"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -523,6 +1085,25 @@ orgs.newOrg('adoptium') {
         "hacktoberfest"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('marketplace-data') {
       allow_auto_merge: true,
@@ -532,6 +1113,25 @@ orgs.newOrg('adoptium') {
       has_issues: false,
       homepage: "https://marketplace-api.adoptium.net/",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: null,
@@ -551,6 +1151,25 @@ orgs.newOrg('adoptium') {
       description: "OpenJDK source mirroring scripts used by",
       homepage: "https://ci.adoptopenjdk.net/view/git-mirrors/job/git-mirrors/job/adoptium/",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -560,10 +1179,28 @@ orgs.newOrg('adoptium') {
       description: "Development of the website has moved to https://github.com/adoptium/website-v2",
       homepage: "https://github.com/adoptium/website-v2",
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: null,
-          required_status_checks: [],
           requires_approving_reviews: false,
         },
       ],
@@ -578,6 +1215,25 @@ orgs.newOrg('adoptium') {
         "aqa-tests"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
     },
     orgs.newRepo('temurin-build') {
       allow_auto_merge: true,
@@ -596,6 +1252,71 @@ orgs.newOrg('adoptium') {
         "temurin"
       ],
       web_commit_signoff_required: false,
+      webhooks: [
+        orgs.newRepoWebhook('https://api.codacy.com/events/github/c7be1d760de3418f836fcfefa494c486') {
+          content_type: "json",
+          events+: [
+            "pull_request",
+            "push"
+          ],
+        },
+        orgs.newRepoWebhook('https://notify.travis-ci.org') {
+          events+: [
+            "create",
+            "delete",
+            "issue_comment",
+            "member",
+            "public",
+            "pull_request",
+            "push",
+            "repository"
+          ],
+        },
+        orgs.newRepoWebhook('https://ci.adoptopenjdk.net/github-webhook/') {
+          events+: [
+            "commit_comment",
+            "issue_comment",
+            "issues",
+            "label",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "push"
+          ],
+        },
+        orgs.newRepoWebhook('https://snyk.io/webhook/github/eddc3d05-e244-419a-a2d1-976bfecbf696') {
+          content_type: "json",
+          events+: [
+            "pull_request",
+            "push"
+          ],
+          secret: "********",
+        },
+        orgs.newRepoWebhook('https://ci.adoptopenjdk.net/ghprbhook/') {
+          events+: [
+            "issue_comment",
+            "pull_request"
+          ],
+          secret: "********",
+        },
+        orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
+          content_type: "json",
+          events+: [
+            "issue_comment",
+            "issues",
+            "label",
+            "member",
+            "meta",
+            "milestone",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "repository",
+            "team_add"
+          ],
+          secret: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
