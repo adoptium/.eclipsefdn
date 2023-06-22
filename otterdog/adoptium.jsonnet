@@ -329,14 +329,6 @@ orgs.newOrg('adoptium') {
       homepage: "",
       web_commit_signoff_required: false,
       webhooks: [
-        orgs.newRepoWebhook('https://snyk.io/webhook/github/7deaca9e-6f61-4599-b985-655b7065663a') {
-          content_type: "json",
-          events+: [
-            "pull_request",
-            "push"
-          ],
-          secret: "********",
-        },
         orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
           content_type: "json",
           events+: [
@@ -712,22 +704,6 @@ orgs.newOrg('adoptium') {
       ],
       web_commit_signoff_required: false,
       webhooks: [
-        orgs.newRepoWebhook('https://snyk.io/webhook/github') {
-          content_type: "json",
-          events+: [
-            "pull_request",
-            "push"
-          ],
-          secret: "********",
-        },
-        orgs.newRepoWebhook('https://snyk.io/webhook/github/6e4772c5-93c0-42cf-b98e-650ed3abcf5b') {
-          content_type: "json",
-          events+: [
-            "pull_request",
-            "push"
-          ],
-          secret: "********",
-        },
         orgs.newRepoWebhook('https://webhook.zenhub.com/webhook/github/v2') {
           content_type: "json",
           events+: [
@@ -1252,18 +1228,6 @@ orgs.newOrg('adoptium') {
             "push"
           ],
         },
-        orgs.newRepoWebhook('https://notify.travis-ci.org') {
-          events+: [
-            "create",
-            "delete",
-            "issue_comment",
-            "member",
-            "public",
-            "pull_request",
-            "push",
-            "repository"
-          ],
-        },
         orgs.newRepoWebhook('https://ci.adoptium.net/github-webhook/') {
           events+: [
             "commit_comment",
@@ -1275,14 +1239,6 @@ orgs.newOrg('adoptium') {
             "pull_request_review_comment",
             "push"
           ],
-        },
-        orgs.newRepoWebhook('https://snyk.io/webhook/github/eddc3d05-e244-419a-a2d1-976bfecbf696') {
-          content_type: "json",
-          events+: [
-            "pull_request",
-            "push"
-          ],
-          secret: "********",
         },
         orgs.newRepoWebhook('https://ci.adoptium.net/ghprbhook/') {
           events+: [
