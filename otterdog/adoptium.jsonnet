@@ -27,16 +27,16 @@ orgs.newOrg('adoptium') {
   ],
   secrets+: [
     orgs.newOrgSecret('ADOPTIUM_AQAVIT_BOT_TOKEN') {
-      value: "********",
+      value: "pass:bots/adoptium.aqavit/github.com/project-token",
     },
     orgs.newOrgSecret('ADOPTIUM_BOT_TOKEN') {
-      value: "********",
+      value: "pass:bots/adoptium/github.com/project-token",
     },
     orgs.newOrgSecret('ADOPTIUM_TEMURIN_BOT_TOKEN') {
-      value: "********",
+      value: "pass:bots/adoptium.temurin/github.com/project-token",
     },
     orgs.newOrgSecret('SLACK_WEBHOOK_CODEFREEZE_URL') {
-      value: "********",
+      value: "pass:bots/adoptium/github.com/slack-webhook-codefreeze-url",
     },
   ],
   _repositories+:: [
@@ -129,14 +129,6 @@ orgs.newOrg('adoptium') {
         "hacktoberfest"
       ],
       web_commit_signoff_required: false,
-      secrets: [
-        orgs.newRepoSecret('NETLIFY_AUTH_TOKEN') {
-          value: "********",
-        },
-        orgs.newRepoSecret('NETLIFY_SITE_ID') {
-          value: "********",
-        },
-      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -173,22 +165,19 @@ orgs.newOrg('adoptium') {
       web_commit_signoff_required: false,
       secrets: [
         orgs.newRepoSecret('AZURE_CLIENT_ID') {
-          value: "********",
+          value: "bots/adoptium/azure/azure-client-id",
         },
         orgs.newRepoSecret('AZURE_CLIENT_ID_OIDC') {
-          value: "********",
+          value: "bots/adoptium/azure/azure-client-id-oidc",
         },
         orgs.newRepoSecret('AZURE_CLIENT_SECRET') {
-          value: "********",
-        },
-        orgs.newRepoSecret('AZURE_CREDENTIALS') {
-          value: "********",
+          value: "bots/adoptium/azure/azure-client-secret",
         },
         orgs.newRepoSecret('AZURE_SUBSCRIPTION_ID') {
-          value: "********",
+          value: "bots/adoptium/azure/azure-subscription-id",
         },
         orgs.newRepoSecret('AZURE_TENANT_ID') {
-          value: "********",
+          value: "bots/adoptium/azure/azure-tenant-id",
         },
       ],
       branch_protection_rules: [
@@ -477,10 +466,10 @@ orgs.newOrg('adoptium') {
       ],
       secrets: [
         orgs.newRepoSecret('DOCKER_PASSWORD') {
-          value: "********",
+          value: "bots/adoptium/docker.com/password",
         },
         orgs.newRepoSecret('DOCKER_USERNAME') {
-          value: "********",
+          value: "bots/adoptium/docker.com/username",
         },
       ],
       branch_protection_rules: [
@@ -501,10 +490,10 @@ orgs.newOrg('adoptium') {
       web_commit_signoff_required: false,
       secrets: [
         orgs.newRepoSecret('ARTIFACTORY_PASSWORD') {
-          value: "********",
+          value: "bots/adoptium/artifactory/password",
         },
         orgs.newRepoSecret('ARTIFACTORY_USER') {
-          value: "********",
+          value: "bots/adoptium/artifactory/username",
         },
       ],
       branch_protection_rules: [
@@ -647,11 +636,11 @@ orgs.newOrg('adoptium') {
       ],
       web_commit_signoff_required: false,
       secrets: [
-        orgs.newRepoSecret('PASSWORD') {
-          value: "********",
+        orgs.newRepoSecret('ARTIFACTORY_PASSWORD') {
+          value: "bots/adoptium/artifactory/password",
         },
-        orgs.newRepoSecret('USERNAME') {
-          value: "********",
+        orgs.newRepoSecret('ARTIFACTORY_USER') {
+          value: "bots/adoptium/artifactory/username",
         },
       ],
     },
@@ -665,7 +654,7 @@ orgs.newOrg('adoptium') {
       web_commit_signoff_required: false,
       secrets: [
         orgs.newRepoSecret('TEMURIN_RSA_PRIVATE') {
-          value: "********",
+          value: "bots/adoptium/github.com/temurin-rsa-private",
         },
       ],
       branch_protection_rules: [
