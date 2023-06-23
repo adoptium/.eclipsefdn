@@ -25,6 +25,20 @@ orgs.newOrg('adoptium') {
       secret: "********",
     },
   ],
+  secrets+: [
+    orgs.newOrgSecret('ADOPTIUM_AQAVIT_BOT_TOKEN') {
+      value: "********",
+    },
+    orgs.newOrgSecret('ADOPTIUM_BOT_TOKEN') {
+      value: "********",
+    },
+    orgs.newOrgSecret('ADOPTIUM_TEMURIN_BOT_TOKEN') {
+      value: "********",
+    },
+    orgs.newOrgSecret('SLACK_WEBHOOK_CODEFREEZE_URL') {
+      value: "********",
+    },
+  ],
   _repositories+:: [
     orgs.newRepo('.eclipsefdn-private') {
       allow_forking: false,
@@ -115,6 +129,14 @@ orgs.newOrg('adoptium') {
         "hacktoberfest"
       ],
       web_commit_signoff_required: false,
+      secrets: [
+        orgs.newRepoSecret('NETLIFY_AUTH_TOKEN') {
+          value: "********",
+        },
+        orgs.newRepoSecret('NETLIFY_SITE_ID') {
+          value: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -149,6 +171,26 @@ orgs.newOrg('adoptium') {
         "temurin"
       ],
       web_commit_signoff_required: false,
+      secrets: [
+        orgs.newRepoSecret('AZURE_CLIENT_ID') {
+          value: "********",
+        },
+        orgs.newRepoSecret('AZURE_CLIENT_ID_OIDC') {
+          value: "********",
+        },
+        orgs.newRepoSecret('AZURE_CLIENT_SECRET') {
+          value: "********",
+        },
+        orgs.newRepoSecret('AZURE_CREDENTIALS') {
+          value: "********",
+        },
+        orgs.newRepoSecret('AZURE_SUBSCRIPTION_ID') {
+          value: "********",
+        },
+        orgs.newRepoSecret('AZURE_TENANT_ID') {
+          value: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('marketplace') {
           required_approving_review_count: 1,
@@ -212,6 +254,11 @@ orgs.newOrg('adoptium') {
             "pull_request"
           ],
           secret: "pass:bots/adoptium/github.com/ci-webhook-secret",
+        },
+      ],
+      secrets: [
+        orgs.newRepoSecret('JENKINS_WORKFLOW_SECRET') {
+          value: "********",
         },
       ],
       branch_protection_rules: [
@@ -428,6 +475,14 @@ orgs.newOrg('adoptium') {
           ],
         },
       ],
+      secrets: [
+        orgs.newRepoSecret('DOCKER_PASSWORD') {
+          value: "********",
+        },
+        orgs.newRepoSecret('DOCKER_USERNAME') {
+          value: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -444,6 +499,14 @@ orgs.newOrg('adoptium') {
         "installer"
       ],
       web_commit_signoff_required: false,
+      secrets: [
+        orgs.newRepoSecret('ARTIFACTORY_PASSWORD') {
+          value: "********",
+        },
+        orgs.newRepoSecret('ARTIFACTORY_USER') {
+          value: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -583,6 +646,14 @@ orgs.newOrg('adoptium') {
         "hacktoberfest"
       ],
       web_commit_signoff_required: false,
+      secrets: [
+        orgs.newRepoSecret('PASSWORD') {
+          value: "********",
+        },
+        orgs.newRepoSecret('USERNAME') {
+          value: "********",
+        },
+      ],
     },
     orgs.newRepo('marketplace-data') {
       allow_auto_merge: true,
@@ -592,6 +663,11 @@ orgs.newOrg('adoptium') {
       has_issues: false,
       homepage: "https://marketplace-api.adoptium.net/",
       web_commit_signoff_required: false,
+      secrets: [
+        orgs.newRepoSecret('TEMURIN_RSA_PRIVATE') {
+          value: "********",
+        },
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: null,
