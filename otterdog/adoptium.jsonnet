@@ -6,9 +6,6 @@ orgs.newOrg('adoptium') {
     default_repository_permission: "none",
     default_workflow_permissions: "write",
     description: "The Adoptium Working Group promotes and supports high-quality runtimes and associated technology for use across the Java ecosystem",
-    members_can_change_project_visibility: true,
-    members_can_change_repo_visibility: true,
-    members_can_delete_repositories: true,
     name: "Eclipse Adoptium",
     readers_can_create_discussions: true,
     security_managers+: [
