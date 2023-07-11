@@ -40,15 +40,6 @@ orgs.newOrg('adoptium') {
     },
   ],
   _repositories+:: [
-    orgs.newRepo('.eclipsefdn-private') {
-      allow_forking: false,
-      archived: true,
-      description: "Repository to host configurations related to the Eclipse Foundation.",
-      has_projects: false,
-      has_wiki: false,
-      private: true,
-      web_commit_signoff_required: false,
-    },
     orgs.newRepo('.github') {
       allow_auto_merge: true,
       allow_merge_commit: false,
