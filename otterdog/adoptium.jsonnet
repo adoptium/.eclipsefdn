@@ -92,6 +92,7 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('adoptium') {
       allow_update_branch: false,
       dependabot_alerts_enabled: false,
+      has_discussions: true,
       homepage: "https://adoptium.net",
       topics+: [
         "adoptium",
@@ -107,6 +108,7 @@ orgs.newOrg('adoptium') {
       allow_update_branch: false,
       default_branch: "master",
       description: "For end-user problems reported with our binary distributions",
+      has_discussions: true,
       web_commit_signoff_required: false,
     },
     orgs.newRepo('adoptium.net') {
