@@ -40,9 +40,6 @@ orgs.newOrg('adoptium') {
     },
   ],
   _repositories+:: [
-    orgs.extendRepo('.eclipsefdn') {
-      dependabot_security_updates_enabled: true,
-    },
     orgs.newRepo('.github') {
       allow_auto_merge: true,
       allow_merge_commit: false,
