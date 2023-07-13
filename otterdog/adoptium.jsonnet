@@ -40,6 +40,9 @@ orgs.newOrg('adoptium') {
     },
   ],
   _repositories+:: [
+    orgs.extendRepo('.eclipsefdn') {
+      dependabot_security_updates_enabled: true,
+    },
     orgs.newRepo('.github') {
       allow_auto_merge: true,
       allow_merge_commit: false,
@@ -67,6 +70,7 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('TKG') {
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       description: "TestKitGen (TKG)",
       homepage: "",
       web_commit_signoff_required: false,
@@ -116,6 +120,7 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: false,
       allow_update_branch: false,
       delete_branch_on_merge: true,
+      dependabot_security_updates_enabled: true,
       description: "Adoptium Website",
       homepage: "https://adoptium.net",
       topics+: [
@@ -136,6 +141,7 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('alpine-jdk8u') {
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       description: "JDK8u mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk8u. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible",
       homepage: "",
       web_commit_signoff_required: false,
@@ -213,6 +219,7 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: false,
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       description: "Home of Test Results Summary Service (TRSS) and PerfNext.  These tools are designed to improve our ability to monitor and triage tests at the Adoptium project.  The code is generic enough that it is extensible for use by any project that needs to monitor multiple CI servers and aggregate their results.",
       homepage: "",
       web_commit_signoff_required: false,
@@ -221,6 +228,7 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: false,
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       description: "Home of test infrastructure for Adoptium builds",
       homepage: "https://adoptium.net/aqavit",
       topics+: [
@@ -277,6 +285,7 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('build-jdk') {
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       description: "Github action for building JDKs that utilizes the build scripts from the openjdk-build repo",
       web_commit_signoff_required: false,
     },
@@ -284,6 +293,7 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: false,
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       description: "A microbenchmarking test framework for Eclipse Adoptium",
       homepage: "",
       topics+: [
@@ -425,6 +435,7 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: false,
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       description: "Scripts for release artefacts to GitHub releases",
       homepage: "",
       topics+: [
@@ -439,6 +450,7 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: false,
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       description: "This repo contains all information about machine maintenance.",
       homepage: "",
       topics+: [
@@ -473,6 +485,7 @@ orgs.newOrg('adoptium') {
       allow_auto_merge: true,
       default_branch: "master",
       delete_branch_on_merge: true,
+      dependabot_security_updates_enabled: true,
       description: "Installer scripts for Eclipse Temurin binaries",
       homepage: "",
       squash_merge_commit_title: "PR_TITLE",
@@ -561,6 +574,7 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('jdk19u') {
       allow_update_branch: false,
       default_branch: "dev",
+      dependabot_security_updates_enabled: true,
       secret_scanning: "disabled",
       secret_scanning_push_protection: "disabled",
       web_commit_signoff_required: false,
@@ -574,6 +588,7 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('jdk20u') {
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       secret_scanning: "disabled",
       secret_scanning_push_protection: "disabled",
       web_commit_signoff_required: false,
@@ -581,6 +596,7 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('jdk21') {
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       secret_scanning_push_protection: "disabled",
       web_commit_signoff_required: false,
     },
@@ -621,6 +637,7 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('jmc-build') {
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       description: "Contains the Adoptium specific source code overrides and build pipeline script for the Java Mission Control project.",
       has_wiki: false,
       homepage: "",
@@ -641,6 +658,7 @@ orgs.newOrg('adoptium') {
       allow_auto_merge: true,
       allow_update_branch: false,
       delete_branch_on_merge: true,
+      dependabot_security_updates_enabled: true,
       description: "The official source of Marketplace data (JSON) for feeding Eclipse Temurin binaries to the Marketplace API \ud83d\udcbe",
       has_issues: false,
       homepage: "https://marketplace-api.adoptium.net/",
@@ -688,6 +706,7 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('run-aqa') {
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       description: "Repository for the Github Action that enables the running of the Adoptium Quality Assurance (AQA) tests",
       homepage: "",
       topics+: [
@@ -701,6 +720,7 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: false,
       allow_update_branch: false,
       default_branch: "master",
+      dependabot_security_updates_enabled: true,
       description: "Eclipse Temurin\u2122 build scripts - common across all releases/versions",
       homepage: "",
       topics+: [
@@ -777,12 +797,14 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('temurin20-binaries') {
       allow_update_branch: false,
+      dependabot_security_updates_enabled: true,
       description: "Temurin 20 binaries",
       has_issues: false,
       web_commit_signoff_required: false,
     },
     orgs.newRepo('temurin21-binaries') {
       allow_update_branch: false,
+      dependabot_security_updates_enabled: true,
       description: "Temurin 21 binaries",
       has_issues: false,
       web_commit_signoff_required: false,
