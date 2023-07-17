@@ -1,2 +1,5 @@
-# Otterdog related:
+# The releng team is by default the owner of everything.
+*             @adoptium/eclipsefdn-releng
+
+# Otterdog related configuration are also owned by the security team.
 /otterdog/**  @adoptium/eclipsefdn-security
