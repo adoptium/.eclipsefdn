@@ -669,7 +669,6 @@ orgs.newOrg('adoptium') {
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: null,
           required_status_checks+: [
-            "call-adoptium-verifier / download-testing",
             "call-adoptium-verifier / validate"
           ],
           requires_approving_reviews: false,
