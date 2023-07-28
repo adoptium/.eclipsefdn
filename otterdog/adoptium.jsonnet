@@ -419,14 +419,6 @@ orgs.newOrg('adoptium') {
       dependabot_alerts_enabled: false,
       description: "Eclipse Migration Toolkit for Java",
       web_commit_signoff_required: false,
-      webhooks: [
-        orgs.newRepoWebhook('https://oapi.dingtalk.com/robot/send?access_token=ffc24f077919df275c7250e56a3a32b93e6a906a69665a29f1f8b4ba45e5498e') {
-          content_type: "json",
-          events+: [
-            "issues"
-          ],
-        },
-      ],
     },
     orgs.newRepo('github-release-scripts') {
       allow_merge_commit: false,
