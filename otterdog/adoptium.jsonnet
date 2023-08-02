@@ -6,7 +6,7 @@ orgs.newOrg('adoptium') {
     default_repository_permission: "none",
     default_workflow_permissions: "write",
     description: "The Adoptium Working Group promotes and supports high-quality runtimes and associated technology for use across the Java ecosystem",
-    name: "Eclipse Adoptium",
+    name: "Eclipse Adoptium Project",
     readers_can_create_discussions: true,
     security_managers+: [
       "adoptium-project-leads"
@@ -134,6 +134,11 @@ orgs.newOrg('adoptium') {
           ],
         },
       ],
+    },
+    orgs.newRepo('alpine-jdk8u-test') {
+      allow_update_branch: false,
+      default_branch: "master",
+      web_commit_signoff_required: false,
     },
     orgs.newRepo('alpine-jdk8u') {
       allow_update_branch: false,
