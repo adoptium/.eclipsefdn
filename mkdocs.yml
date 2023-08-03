@@ -3,6 +3,7 @@ site_description: Otterdog configuration @ adoptium
 strict: true
 
 site_url: https://adoptium.github.io/.eclipsefdn/
+
 docs_dir: ./docs
 site_dir: ./_site
 
