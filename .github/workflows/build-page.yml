@@ -8,8 +8,8 @@ on:
     paths:
       - 'otterdog/*.jsonnet'
       - 'otterdog/*.json'
-      - 'docs/*',
-      - 'mkdocs.yml',
+      - 'docs/*'
+      - 'mkdocs.yml'
       - '.github/workflows/build-page.yml'
 
 concurrency:
