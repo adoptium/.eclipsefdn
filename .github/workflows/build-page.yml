@@ -8,6 +8,7 @@ on:
     paths:
       - 'otterdog/*.jsonnet'
       - 'otterdog/*.json'
+      - 'docs/*'
 
 concurrency:
   group: "pages"
