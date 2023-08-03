@@ -63,10 +63,10 @@ jobs:
         working-directory: otterdog-configs
 
       - name: Generate default configuration as markdown
-        run: ../otterdog/otterdog.sh show-default ${{ github.repository_owner }} -c otterdog.json --markdown > default.md 
+        run: ../otterdog/otterdog.sh show-default ${{ github.repository_owner }} -c otterdog.json --markdown > default.txt 
         working-directory: otterdog-configs
 
-      - name: Upload default.md
+      - name: Upload default text snippet
         uses: actions/upload-artifact@v3
         with:
           name: default-text
