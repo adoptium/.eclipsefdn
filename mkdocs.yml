@@ -1,0 +1,19 @@
+site_name: Otterdog configuration @ adoptium
+site_description: Otterdog configuration @ adoptium
+strict: true
+
+site_url: https://adoptium.github.io/.eclipsefdn/
+docs_dir: ./docs
+site_dir: ./_site
+
+theme:
+  name: 'material'
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins: []
+nav: []
+watch: []
