@@ -81,7 +81,7 @@ jobs:
           name: generated-site
           path: |
             otterdog-configs/default.txt
-            otterdog-configs/orgs/{{ github.repository_owner }}/vendor/otterdog-defaults/*.libsonnet
+            otterdog-configs/orgs/${{ github.repository_owner }}/vendor/otterdog-defaults/*.libsonnet
             otterdog-configs/generated-site/
 
   build-page:
