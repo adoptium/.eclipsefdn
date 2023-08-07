@@ -50,7 +50,7 @@ You can use the playground below to create and evaluate resource snippets to inc
   </div>
 </div>
 
-## Default values
+## Resource functions and default values
 
-The following snippets illustrate the default values that are inherited from the [default configuration](https://github.com/EclipseFdn/otterdog-defaults/blob/main/otterdog-defaults.libsonnet).
-used at the Eclipse Foundation in a more human readable form.
+The following snippets illustrate the functions to create the supported resources with default values as defined in the [default configuration](https://github.com/EclipseFdn/otterdog-defaults/blob/main/otterdog-defaults.libsonnet).
+used at the Eclipse Foundation.
