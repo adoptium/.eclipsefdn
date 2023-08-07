@@ -5,9 +5,9 @@ hide:
   - toc
 ---
 
-## Playground
+# Playground
 
-You can use the editor below to create and evaluate snippets for your jsonnet configuration:
+You can use the playground below to create and evaluate resource snippets to include in your jsonnet configuration:
 
 <div class="inverse hgroup">
   <div class=hgroup-inline>

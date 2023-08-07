@@ -14,4 +14,4 @@ The current configuration can be reviewed [here](configuration.md).
 
 ## Playground
 
-A playground for creating resources is available [here](editor.md)
+A playground for creating resources is available [here](playground.md)
