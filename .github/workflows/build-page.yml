@@ -76,7 +76,7 @@ jobs:
         working-directory: otterdog-configs
 
       - name: Upload generated site content
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3
         with:
           name: generated-site
           path: |
@@ -96,7 +96,7 @@ jobs:
         run: |
           cat default.txt >> ./docs/index.md
           cp generated-site/*.md ./docs/
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@61a6322f88396a6271a6ee3565807d608ecaddd1 # v4
         with:
           python-version: 3.x
           cache: 'pip'
