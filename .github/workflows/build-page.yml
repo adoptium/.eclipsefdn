@@ -95,7 +95,7 @@ jobs:
           name: generated-site
       - shell: bash
         run: |
-          cat default.txt >> ./docs/editor.md
+          cat default.txt >> ./docs/playground.md
           cp generated-site/*.md ./docs/
           cp orgs/${{ github.repository_owner }}/vendor/otterdog-defaults/*.libsonnet ./docs/jsonnet/
       - uses: actions/setup-python@61a6322f88396a6271a6ee3565807d608ecaddd1 # v4
