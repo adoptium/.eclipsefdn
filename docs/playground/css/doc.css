@@ -113,7 +113,7 @@ p.jump_to_page_top a:visited {
 
 
 div.inverse {
-  background-color: #0064bd;
+  background-color: var(--md-primary-fg-color);
   background-position: center; 
   background-size: 128px;
   padding-top: 16px;
@@ -140,13 +140,11 @@ img#venn {
 .tab-window-input,
 .tab-window-output {
   width: 600px;
-  box-shadow: 0 0 16px 16px #0064bd;
   border-radius: 12px;
 }
 
 .tab-header {
   height: 40px;
-  background-color: #0064bd;
 }
 
 .tab-header div {
