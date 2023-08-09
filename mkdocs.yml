@@ -9,7 +9,7 @@ site_dir: ./_site
 
 theme:
   name: 'material'
-  custom_dir: overrides
+  custom_dir: docs/overrides
 
 markdown_extensions:
   - pymdownx.superfences
