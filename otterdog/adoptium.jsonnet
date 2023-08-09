@@ -146,7 +146,7 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('api.adoptium.net') {
       allow_update_branch: false,
       dependabot_alerts_enabled: false,
-      description: "Adoptium API \ud83d\ude80",
+      description: "Adoptium API 🚀",
       homepage: "https://api.adoptium.net",
       topics+: [
         "adoptium",
@@ -648,7 +648,7 @@ orgs.newOrg('adoptium') {
       allow_update_branch: false,
       delete_branch_on_merge: true,
       dependabot_security_updates_enabled: true,
-      description: "The official source of Marketplace data (JSON) for feeding Eclipse Temurin binaries to the Marketplace API \ud83d\udcbe",
+      description: "The official source of Marketplace data (JSON) for feeding Eclipse Temurin binaries to the Marketplace API 💾",
       has_issues: false,
       homepage: "https://marketplace-api.adoptium.net/",
       web_commit_signoff_required: false,
@@ -709,7 +709,7 @@ orgs.newOrg('adoptium') {
       allow_update_branch: false,
       default_branch: "master",
       dependabot_security_updates_enabled: true,
-      description: "Eclipse Temurin\u2122 build scripts - common across all releases/versions",
+      description: "Eclipse Temurin™ build scripts - common across all releases/versions",
       homepage: "",
       topics+: [
         "cacert",
