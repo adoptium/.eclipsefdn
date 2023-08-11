@@ -797,6 +797,13 @@ orgs.newOrg('adoptium') {
       has_issues: false,
       web_commit_signoff_required: false,
     },
+    orgs.newRepo('temurin22-binaries') {
+      allow_update_branch: false,
+      dependabot_security_updates_enabled: true,
+      description: "Temurin 22 binaries",
+      has_issues: false,
+      web_commit_signoff_required: false,
+    },
     orgs.newRepo('temurin8-binaries') {
       allow_update_branch: false,
       description: "Temurin 8 binaries",
