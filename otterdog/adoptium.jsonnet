@@ -9,7 +9,9 @@ orgs.newOrg('adoptium') {
     name: "Eclipse Adoptium",
     readers_can_create_discussions: true,
     security_managers+: [
-      "adoptium-project-leads"
+      "adoptium-project-leads",
+      "adoptium-aqavit-project-leads",
+      "adoptium-temurin-project-leads"
     ],
     twitter_username: "adoptium",
     web_commit_signoff_required: false,
