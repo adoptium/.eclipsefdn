@@ -207,6 +207,15 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
+    orgs.newRepo('temurin-cpe-generator') {
+      allow_auto_merge: true,
+      allow_merge_commit: false,
+      allow_update_branch: false,
+      web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main'),
+      ],
+    },
     orgs.newRepo('aqa-systemtest') {
       allow_merge_commit: false,
       allow_update_branch: false,
