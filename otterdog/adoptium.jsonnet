@@ -213,6 +213,7 @@ orgs.newOrg('adoptium') {
       allow_update_branch: false,
       web_commit_signoff_required: false,
       branch_protection_rules: [
+        required_approving_review_count: 1,
         orgs.newBranchProtectionRule('main'),
       ],
     },
