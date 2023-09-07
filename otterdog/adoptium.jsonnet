@@ -4,17 +4,19 @@ orgs.newOrg('adoptium') {
   settings+: {
     blog: "https://adoptium.net",
     default_repository_permission: "none",
-    default_workflow_permissions: "write",
     description: "The Adoptium Working Group promotes and supports high-quality runtimes and associated technology for use across the Java ecosystem",
     name: "Eclipse Adoptium",
     readers_can_create_discussions: true,
     security_managers+: [
-      "adoptium-project-leads",
       "adoptium-aqavit-project-leads",
+      "adoptium-project-leads",
       "adoptium-temurin-project-leads"
     ],
     twitter_username: "adoptium",
     web_commit_signoff_required: false,
+    workflows+: {
+      default_workflow_permissions: "write",
+    },
   },
   webhooks+: [
     orgs.newOrgWebhook('https://app.codacy.com/2.0/events/gh/organization') {
@@ -204,17 +206,6 @@ orgs.newOrg('adoptium') {
             "Build (adoptium)",
             "Build (adoptopenjdk)"
           ],
-        },
-      ],
-    },
-    orgs.newRepo('temurin-cpe-generator') {
-      allow_auto_merge: true,
-      allow_merge_commit: false,
-      allow_update_branch: false,
-      web_commit_signoff_required: false,
-      branch_protection_rules: [
-        orgs.newBranchProtectionRule('main') {
-          required_approving_review_count: 1,
         },
       ],
     },
@@ -764,6 +755,17 @@ orgs.newOrg('adoptium') {
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
+      ],
+    },
+    orgs.newRepo('temurin-cpe-generator') {
+      allow_auto_merge: true,
+      allow_merge_commit: false,
+      allow_update_branch: false,
+      web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+        },
       ],
     },
     orgs.newRepo('temurin11-binaries') {
