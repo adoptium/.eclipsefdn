@@ -179,6 +179,9 @@ orgs.newOrg('adoptium') {
         orgs.newRepoSecret('AZURE_TENANT_ID') {
           value: "bots/adoptium/azure/azure-tenant-id",
         },
+        orgs.newRepoSecret('DIGITALOCEAN_ACCESS_TOKEN') {
+          value: "bots/adoptium/digital-ocean/access-token",
+        },
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('marketplace') {
