@@ -180,7 +180,7 @@ orgs.newOrg('adoptium') {
           value: "bots/adoptium/azure/azure-tenant-id",
         },
         orgs.newRepoSecret('DIGITALOCEAN_ACCESS_TOKEN') {
-          value: "bots/adoptium/digital-ocean/access-token",
+          value: "bots/adoptium/digitalocean.com/access-token",
         },
       ],
       branch_protection_rules: [
