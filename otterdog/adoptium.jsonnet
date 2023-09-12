@@ -149,7 +149,7 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('api.adoptium.net') {
       allow_update_branch: false,
-      allow_squash_commit: false,
+      allow_squash_merge: false,
       dependabot_alerts_enabled: false,
       description: "Adoptium API 🚀",
       homepage: "https://api.adoptium.net",
