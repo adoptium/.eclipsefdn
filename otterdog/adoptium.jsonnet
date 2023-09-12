@@ -166,22 +166,22 @@ orgs.newOrg('adoptium') {
       web_commit_signoff_required: false,
       secrets: [
         orgs.newRepoSecret('AZURE_CLIENT_ID') {
-          value: "bots/adoptium/azure/azure-client-id",
+          value: "pass:bots/adoptium/azure/azure-client-id",
         },
         orgs.newRepoSecret('AZURE_CLIENT_ID_OIDC') {
-          value: "bots/adoptium/azure/azure-client-id-oidc",
+          value: "pass:bots/adoptium/azure/azure-client-id-oidc",
         },
         orgs.newRepoSecret('AZURE_CLIENT_SECRET') {
-          value: "bots/adoptium/azure/azure-client-secret",
+          value: "pass:bots/adoptium/azure/azure-client-secret",
         },
         orgs.newRepoSecret('AZURE_SUBSCRIPTION_ID') {
-          value: "bots/adoptium/azure/azure-subscription-id",
+          value: "pass:bots/adoptium/azure/azure-subscription-id",
         },
         orgs.newRepoSecret('AZURE_TENANT_ID') {
-          value: "bots/adoptium/azure/azure-tenant-id",
+          value: "pass:bots/adoptium/azure/azure-tenant-id",
         },
         orgs.newRepoSecret('DIGITALOCEAN_ACCESS_TOKEN') {
-          value: "bots/adoptium/digitalocean.com/access-token",
+          value: "pass:bots/adoptium/digitalocean.com/access-token",
         },
       ],
       branch_protection_rules: [
@@ -468,10 +468,10 @@ orgs.newOrg('adoptium') {
       ],
       secrets: [
         orgs.newRepoSecret('DOCKER_PASSWORD') {
-          value: "bots/adoptium/docker.com/password",
+          value: "pass:bots/adoptium/docker.com/password",
         },
         orgs.newRepoSecret('DOCKER_USERNAME') {
-          value: "bots/adoptium/docker.com/username",
+          value: "pass:bots/adoptium/docker.com/username",
         },
       ],
       branch_protection_rules: [
@@ -493,10 +493,10 @@ orgs.newOrg('adoptium') {
       web_commit_signoff_required: false,
       secrets: [
         orgs.newRepoSecret('ARTIFACTORY_PASSWORD') {
-          value: "bots/adoptium/artifactory/password",
+          value: "pass:bots/adoptium/artifactory/password",
         },
         orgs.newRepoSecret('ARTIFACTORY_USER') {
-          value: "bots/adoptium/artifactory/username",
+          value: "pass:bots/adoptium/artifactory/username",
         },
       ],
       branch_protection_rules: [
@@ -644,10 +644,10 @@ orgs.newOrg('adoptium') {
       web_commit_signoff_required: false,
       secrets: [
         orgs.newRepoSecret('ARTIFACTORY_PASSWORD') {
-          value: "bots/adoptium/artifactory/password",
+          value: "pass:bots/adoptium/artifactory/password",
         },
         orgs.newRepoSecret('ARTIFACTORY_USER') {
-          value: "bots/adoptium/artifactory/username",
+          value: "pass:bots/adoptium/artifactory/username",
         },
       ],
     },
@@ -662,7 +662,7 @@ orgs.newOrg('adoptium') {
       web_commit_signoff_required: false,
       secrets: [
         orgs.newRepoSecret('TEMURIN_RSA_PRIVATE') {
-          value: "bots/adoptium/github.com/temurin-rsa-private",
+          value: "pass:bots/adoptium/github.com/temurin-rsa-private",
         },
       ],
       branch_protection_rules: [
