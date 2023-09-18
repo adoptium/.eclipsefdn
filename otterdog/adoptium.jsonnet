@@ -711,6 +711,22 @@ orgs.newOrg('adoptium') {
       ],
       web_commit_signoff_required: false,
     },
+    orgs.newRepo('temurin') {
+      allow_auto_merge: true,
+      allow_merge_commit: false,
+      allow_update_branch: false,
+      default_branch: "main",
+      has_wiki: false,
+      dependabot_security_updates_enabled: true,
+      description: "Eclipse Temurin™ project assets",
+      homepage: "https://adoptium.net/temurin",
+      web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+        },
+      ],
+    },
     orgs.newRepo('temurin-build') {
       allow_auto_merge: true,
       allow_merge_commit: false,
