@@ -388,6 +388,15 @@ orgs.newOrg('adoptium') {
         "react"
       ],
       web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+          required_status_checks+: [
+            "Lint Code Base",
+            "netlify:netlify/eclipsefdn-adoptium-dash/deploy-preview"
+          ],
+        },
+      ],
     },
     orgs.newRepo('documentation') {
       archived: true,
