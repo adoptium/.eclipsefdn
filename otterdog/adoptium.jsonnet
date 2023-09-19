@@ -775,6 +775,8 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: false,
       allow_update_branch: false,
       web_commit_signoff_required: false,
+      description: "A tool to generate NIST CPE directory entries for Eclipse Temurin using the Adoptium API.",
+      homepage: "https://adoptium.net/temurin",
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
