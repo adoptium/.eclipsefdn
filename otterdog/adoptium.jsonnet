@@ -393,6 +393,7 @@ orgs.newOrg('adoptium') {
           required_approving_review_count: 1,
           required_status_checks+: [
             "Lint Code Base",
+            "Run CI",
             "netlify:netlify/eclipsefdn-adoptium-dash/deploy-preview"
           ],
         },
