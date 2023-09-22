@@ -375,6 +375,7 @@ orgs.newOrg('adoptium') {
       ],
     },
     orgs.newRepo('dash.adoptium.net') {
+      allow_auto_merge: true,
       allow_merge_commit: false,
       allow_update_branch: false,
       dependabot_alerts_enabled: false,
