@@ -12,6 +12,7 @@ local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
   secret_scanning: "disabled",
   secret_scanning_push_protection: "disabled",
   web_commit_signoff_required: false,
+  description:  "This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
 };
 
 orgs.newOrg('adoptium') {
