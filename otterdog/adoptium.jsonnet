@@ -638,6 +638,16 @@ orgs.newOrg('adoptium') {
       secret_scanning_push_protection: "disabled",
       web_commit_signoff_required: false,
     },
+    orgs.newRepo('jdk21u') {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      default_branch: "master",
+      delete_branch_on_merge: false,
+      dependabot_security_updates_enabled: true,
+      secret_scanning: "disabled",
+      secret_scanning_push_protection: "disabled",
+      web_commit_signoff_required: false,
+    },
     orgs.newRepo('jdk8u') {
       allow_merge_commit: true,
       allow_update_branch: false,
