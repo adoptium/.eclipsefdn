@@ -588,7 +588,7 @@ orgs.newOrg('adoptium') {
     newMirrorRepo('jdk8u') {
     },
     newMirrorRepo('jdk8u_hg') {
-      jdk_name:: "jdk8u",
+      jdk_name:: "JDK8u",
       jdk_url:: "http://hg.openjdk.java.net/jdk8u/jdk8u/",
       archived: true,
     },
