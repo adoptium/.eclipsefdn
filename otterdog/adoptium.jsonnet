@@ -583,6 +583,7 @@ orgs.newOrg('adoptium') {
       description: "JDK20 mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk20. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
     },
     newMirrorRepo('jdk20u') {
+  description: "JDK20u mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk20u. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
     },
     newMirrorRepo('jdk21') {
   description: "JDK21 mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk21. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
