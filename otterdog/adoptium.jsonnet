@@ -593,7 +593,7 @@ orgs.newOrg('adoptium') {
     },
     newMirrorRepo('jdk8u_hg') {
       archived: true,
-      description: "JDK8u mirror from mercurial",
+      description: "JDK8u mirror. This source code is an unmodified mirror of source code obtained from OpenJDK http://hg.openjdk.java.net/jdk8u/jdk8u/. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
       homepage: "http://hg.openjdk.java.net/jdk8u/jdk8u/",
     },
     orgs.newRepo('jenkins-helper') {
