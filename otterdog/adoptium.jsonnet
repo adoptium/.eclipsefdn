@@ -16,7 +16,7 @@ local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
   web_commit_signoff_required: false,
   description: "This repo is an unmodified mirror of source code obtained from OpenJDK. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version that is available at https://adoptium.net.",
   workflows+: {
-    default_workflow_permissions: "write",
+    enabled: false,
   },
 };
 
