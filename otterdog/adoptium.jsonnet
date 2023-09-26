@@ -1,5 +1,30 @@
 local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
+local jdkName(name) =
+  if std.startsWith(name, "jdk") then 
+    "JDK%s" % [ std.substr(name, 3, std.length(name) - 3)]
+  else
+    name;
+
+local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
+  jdk_name:: jdkName(repoName),
+  jdk_url:: "https://github.com/openjdk/%s" % [self.name],
+  allow_merge_commit: true,
+  allow_update_branch: false,
+  auto_init: false,
+  default_branch: "master",
+  delete_branch_on_merge: false,
+  dependabot_alerts_enabled: false,
+  has_issues: false,
+  has_projects: false,
+  has_wiki: false,
+  homepage: "https://adoptium.net",
+  secret_scanning: "disabled",
+  secret_scanning_push_protection: "disabled",
+  web_commit_signoff_required: false,
+  description: "%s mirror. This source code is an unmodified mirror of source code obtained from OpenJDK %s. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net." % [self.jdk_name, self.jdk_url],
+};
+
 orgs.newOrg('adoptium') {
   settings+: {
     blog: "https://adoptium.net",
@@ -84,13 +109,13 @@ orgs.newOrg('adoptium') {
       ],
     },
     orgs.newRepo('aarch32-jdk8u') {
+      jdk_url:: "https://github.com/openjdk/aarch32-port-jdk8u",
       allow_merge_commit: true,
       allow_update_branch: false,
       default_branch: "master",
       delete_branch_on_merge: false,
       dependabot_alerts_enabled: false,
       description: "JDK8u mirror (aarch32 port). This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/aarch32-port-jdk8u. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
-      homepage: "",
       web_commit_signoff_required: false,
     },
     orgs.newRepo('aarch32-jdk8u_hg') {
@@ -145,15 +170,9 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
-    orgs.newRepo('alpine-jdk8u') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      description: "JDK8u mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk8u. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible",
-      homepage: "",
-      web_commit_signoff_required: false,
+    newMirrorRepo('alpine-jdk8u') {
+      jdk_name:: "JDK8u",
+      jdk_url:: "https://github.com/openjdk/jdk8u",
     },
     orgs.newRepo('api.adoptium.net') {
       allow_merge_commit: true,
@@ -526,25 +545,11 @@ orgs.newOrg('adoptium') {
         orgs.newBranchProtectionRule('master'),
       ],
     },
-    orgs.newRepo('jdk') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      description: "JDK mirror from https://github.com/openjdk/jdk",
-      homepage: "",
-      web_commit_signoff_required: false,
+    newMirrorRepo('jdk') {
+      jdk_url:: "https://github.com/openjdk/jdk",
+      description: "This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
     },
-    orgs.newRepo('jdk11u') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      description: "JDK11u mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk11u. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
-      homepage: "",
-      web_commit_signoff_required: false,
+    newMirrorRepo('jdk11u') {
     },
     orgs.newRepo('jdk11u-fast-startup-incubator') {
       allow_merge_commit: true,
@@ -554,123 +559,39 @@ orgs.newOrg('adoptium') {
       dependabot_alerts_enabled: false,
       web_commit_signoff_required: false,
     },
-    orgs.newRepo('jdk16u') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      description: "JDK16u mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk16u. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
-      homepage: "",
-      web_commit_signoff_required: false,
+    newMirrorRepo('jdk16u') {
     },
-    orgs.newRepo('jdk17') {
+    newMirrorRepo('jdk17') {
       archived: true,
-      default_branch: "master",
-      dependabot_alerts_enabled: false,
-      description: "JDK17 mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk17. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead, use the tested and certified Java SE compatible version of the code that is available at https://www.adoptium.net.",
-      homepage: "",
-      web_commit_signoff_required: false,
     },
-    orgs.newRepo('jdk17u') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      description: "JDK17u mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk17u. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
-      homepage: "",
-      web_commit_signoff_required: false,
+    newMirrorRepo('jdk17u') {
     },
-    orgs.newRepo('jdk18') {
+    newMirrorRepo('jdk18') {
       archived: true,
-      default_branch: "master",
-      dependabot_alerts_enabled: false,
-      description: "JDK18 mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk18. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
-      web_commit_signoff_required: false,
     },
-    orgs.newRepo('jdk18u') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      description: "JDK18u mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk18u. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
-      web_commit_signoff_required: false,
+    newMirrorRepo('jdk18u') {
     },
-    orgs.newRepo('jdk19') {
+    newMirrorRepo('jdk19') {
       archived: true,
-      default_branch: "master",
-      dependabot_alerts_enabled: false,
-      description: "jdk19 repository",
-      secret_scanning: "disabled",
-      web_commit_signoff_required: false,
     },
-    orgs.newRepo('jdk19u') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
+    newMirrorRepo('jdk19u') {
       default_branch: "dev",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      secret_scanning: "disabled",
-      secret_scanning_push_protection: "disabled",
-      web_commit_signoff_required: false,
     },
-    orgs.newRepo('jdk20') {
+    newMirrorRepo('jdk20') {
       archived: true,
-      default_branch: "master",
-      dependabot_alerts_enabled: false,
-      secret_scanning: "disabled",
-      web_commit_signoff_required: false,
     },
-    orgs.newRepo('jdk20u') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      secret_scanning: "disabled",
-      secret_scanning_push_protection: "disabled",
-      web_commit_signoff_required: false,
+    newMirrorRepo('jdk20u') {
     },
-    orgs.newRepo('jdk21') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      secret_scanning_push_protection: "disabled",
-      web_commit_signoff_required: false,
+    newMirrorRepo('jdk21') {
     },
-    orgs.newRepo('jdk21u') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      secret_scanning: "disabled",
-      secret_scanning_push_protection: "disabled",
-      web_commit_signoff_required: false,
+    newMirrorRepo('jdk21u') {
     },
-    orgs.newRepo('jdk8u') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      description: "JDK8u mirror. This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk8u. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
-      homepage: "",
-      secret_scanning: "disabled",
-      secret_scanning_push_protection: "disabled",
-      web_commit_signoff_required: false,
+    newMirrorRepo('jdk8u') {
     },
-    orgs.newRepo('jdk8u_hg') {
+    newMirrorRepo('jdk8u_hg') {
+      jdk_name:: "JDK8u",
+      jdk_url:: "http://hg.openjdk.java.net/jdk8u/jdk8u/",
       archived: true,
-      default_branch: "master",
-      dependabot_alerts_enabled: false,
-      description: "JDK8u mirror from mercurial from",
-      homepage: "http://hg.openjdk.java.net/jdk8u/jdk8u/",
-      web_commit_signoff_required: false,
     },
     orgs.newRepo('jenkins-helper') {
       allow_update_branch: false,
