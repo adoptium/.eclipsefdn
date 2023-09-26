@@ -11,6 +11,7 @@ local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
   jdk_url:: "https://github.com/openjdk/%s" % [self.name],
   allow_merge_commit: true,
   allow_update_branch: false,
+  auto_init: false,
   default_branch: "master",
   delete_branch_on_merge: false,
   dependabot_alerts_enabled: false,
