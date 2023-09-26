@@ -1,14 +1,6 @@
 local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
-local jdkName(name) =
-  if std.startsWith(name, "jdk") then 
-    "JDK%s" % [ std.substr(name, 3, std.length(name) - 3)]
-  else
-    name;
-
 local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
-  jdk_name:: jdkName(repoName),
-  jdk_url:: "https://github.com/openjdk/%s" % [self.name],
   allow_merge_commit: true,
   allow_update_branch: false,
   auto_init: false,
@@ -22,7 +14,7 @@ local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
   secret_scanning: "disabled",
   secret_scanning_push_protection: "disabled",
   web_commit_signoff_required: false,
-  description: "%s mirror. This source code is an unmodified mirror of source code obtained from OpenJDK %s. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net." % [self.jdk_name, self.jdk_url],
+  description: "This repo is an unmodified mirror of source code obtained from OpenJDK. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version that is available at https://adoptium.net.",
 };
 
 orgs.newOrg('adoptium') {
@@ -109,13 +101,12 @@ orgs.newOrg('adoptium') {
       ],
     },
     orgs.newRepo('aarch32-jdk8u') {
-      jdk_url:: "https://github.com/openjdk/aarch32-port-jdk8u",
       allow_merge_commit: true,
       allow_update_branch: false,
       default_branch: "master",
       delete_branch_on_merge: false,
       dependabot_alerts_enabled: false,
-      description: "JDK8u mirror (aarch32 port). This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/aarch32-port-jdk8u. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
+      description: "This repo is an unmodified mirror of source code obtained from OpenJDK. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version that is available at https://adoptium.net.",
       web_commit_signoff_required: false,
     },
     orgs.newRepo('aarch32-jdk8u_hg') {
@@ -171,8 +162,6 @@ orgs.newOrg('adoptium') {
       ],
     },
     newMirrorRepo('alpine-jdk8u') {
-      jdk_name:: "JDK8u",
-      jdk_url:: "https://github.com/openjdk/jdk8u",
     },
     orgs.newRepo('api.adoptium.net') {
       allow_merge_commit: true,
@@ -546,8 +535,7 @@ orgs.newOrg('adoptium') {
       ],
     },
     newMirrorRepo('jdk') {
-      jdk_url:: "https://github.com/openjdk/jdk",
-      description: "This source code is an unmodified mirror of source code obtained from OpenJDK https://github.com/openjdk/jdk. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version of the code that is available at https://adoptium.net.",
+      description: "This repo is an unmodified mirror of source code obtained from OpenJDK. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version that is available at https://adoptium.net.",
     },
     newMirrorRepo('jdk11u') {
     },
@@ -589,8 +577,6 @@ orgs.newOrg('adoptium') {
     newMirrorRepo('jdk8u') {
     },
     newMirrorRepo('jdk8u_hg') {
-      jdk_name:: "JDK8u",
-      jdk_url:: "http://hg.openjdk.java.net/jdk8u/jdk8u/",
       archived: true,
     },
     orgs.newRepo('jenkins-helper') {
