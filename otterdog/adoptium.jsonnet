@@ -191,8 +191,7 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
-    newMirrorRepo('alpine-jdk8u') {
-    },
+    newMirrorRepo('alpine-jdk8u') {},
     orgs.newRepo('api.adoptium.net') {
       allow_merge_commit: true,
       allow_squash_merge: false,
@@ -629,35 +628,26 @@ orgs.newOrg('adoptium') {
         default_workflow_permissions: "write",
       }
     },
-    newMirrorRepo('jdk16u') {
-    },
+    newMirrorRepo('jdk16u') {},
     newMirrorRepo('jdk17') {
       archived: true,
     },
-    newMirrorRepo('jdk17u') {
-    },
+    newMirrorRepo('jdk17u') {},
     newMirrorRepo('jdk18') {
       archived: true,
     },
-    newMirrorRepo('jdk18u') {
-    },
+    newMirrorRepo('jdk18u') {},
     newMirrorRepo('jdk19') {
       archived: true,
     },
-    newMirrorRepo('jdk19u') {
-      default_branch: "dev",
-    },
+    newMirrorRepo('jdk19u') {},
     newMirrorRepo('jdk20') {
       archived: true,
     },
-    newMirrorRepo('jdk20u') {
-    },
-    newMirrorRepo('jdk21') {
-    },
-    newMirrorRepo('jdk21u') {
-    },
-    newMirrorRepo('jdk8u') {
-    },
+    newMirrorRepo('jdk20u') {},
+    newMirrorRepo('jdk21') {},
+    newMirrorRepo('jdk21u') {},
+    newMirrorRepo('jdk8u') {},
     newMirrorRepo('jdk8u_hg') {
       archived: true,
     },
