@@ -18,7 +18,7 @@ local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
   has_issues: false,
   has_projects: false,
   has_wiki: false,
-  homepage: self.jdk_url,
+  homepage: "https://adoptium.net",
   secret_scanning: "disabled",
   secret_scanning_push_protection: "disabled",
   web_commit_signoff_required: false,
