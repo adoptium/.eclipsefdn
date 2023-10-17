@@ -1,6 +1,6 @@
 site_name: Otterdog configuration @ adoptium
 site_description: Otterdog configuration @ adoptium
-strict: true
+strict: false
 
 site_url: https://adoptium.github.io/.eclipsefdn/
 
