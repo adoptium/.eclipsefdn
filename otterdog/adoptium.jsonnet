@@ -264,6 +264,61 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
+ orgs.newRepo('marketplace-api.adoptium.net') {
+      allow_merge_commit: true,
+      allow_squash_merge: false,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      dependabot_alerts_enabled: false,
+      description: "Adoptium Marketplace API 🚀",
+      homepage: "https://marketplace-api.adoptium.net",
+      topics+: [
+        "adoptium",
+        "api",
+        "hacktoberfest",
+        "java",
+        "openjdk",
+        "restful-api",
+        "swagger",
+        "temurin"
+      ],
+      web_commit_signoff_required: false,
+      workflows+: {
+        allowed_actions: "selected",
+        default_workflow_permissions: "write",
+      },
+      secrets: [
+        orgs.newRepoSecret('AZURE_CLIENT_ID') {
+          value: "pass:bots/adoptium/azure/azure-client-id",
+        },
+        orgs.newRepoSecret('AZURE_CLIENT_ID_OIDC') {
+          value: "pass:bots/adoptium/azure/azure-client-id-oidc",
+        },
+        orgs.newRepoSecret('AZURE_CLIENT_SECRET') {
+          value: "pass:bots/adoptium/azure/azure-client-secret",
+        },
+        orgs.newRepoSecret('AZURE_SUBSCRIPTION_ID') {
+          value: "pass:bots/adoptium/azure/azure-subscription-id",
+        },
+        orgs.newRepoSecret('AZURE_TENANT_ID') {
+          value: "pass:bots/adoptium/azure/azure-tenant-id",
+        },
+      ],
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('production') {
+          required_approving_review_count: 1,
+          required_status_checks+: [
+            "build"
+          ],
+        },
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+          required_status_checks+: [
+            "build"
+          ],
+        },
+      ],
+    },
     orgs.newRepo('aqa-systemtest') {
       allow_update_branch: false,
       default_branch: "master",
