@@ -270,6 +270,7 @@ orgs.newOrg('adoptium') {
       allow_update_branch: false,
       delete_branch_on_merge: false,
       dependabot_alerts_enabled: false,
+      dependabot_security_updates_enabled: true,
       description: "Adoptium Marketplace API 🚀",
       homepage: "https://marketplace-api.adoptium.net",
       topics+: [
