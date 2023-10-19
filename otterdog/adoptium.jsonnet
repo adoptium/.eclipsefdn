@@ -264,7 +264,7 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
- orgs.newRepo('marketplace-api.adoptium.net') {
+    orgs.newRepo('marketplace-api.adoptium.net') {
       allow_merge_commit: true,
       allow_squash_merge: false,
       allow_update_branch: false,
