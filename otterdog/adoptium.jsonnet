@@ -304,6 +304,20 @@ orgs.newOrg('adoptium') {
           value: "pass:bots/adoptium/azure/azure-tenant-id",
         },
       ],
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('production') {
+          required_approving_review_count: 1,
+          required_status_checks+: [
+            "build"
+          ],
+        },
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+          required_status_checks+: [
+            "build"
+          ],
+        },
+      ],
     },
     orgs.newRepo('aqa-systemtest') {
       allow_update_branch: false,
