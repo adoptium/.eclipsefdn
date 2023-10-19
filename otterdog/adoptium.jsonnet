@@ -264,6 +264,47 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
+    orgs.newRepo('marketplace-api.adoptium.net') {
+      allow_merge_commit: true,
+      allow_squash_merge: false,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      dependabot_security_updates_enabled: true,
+      description: "Adoptium Marketplace API 🚀",
+      homepage: "https://marketplace-api.adoptium.net",
+      topics+: [
+        "adoptium",
+        "api",
+        "hacktoberfest",
+        "java",
+        "openjdk",
+        "restful-api",
+        "swagger",
+        "temurin"
+      ],
+      web_commit_signoff_required: false,
+      workflows+: {
+        allowed_actions: "selected",
+        default_workflow_permissions: "write",
+      },
+      secrets: [
+        orgs.newRepoSecret('AZURE_CLIENT_ID') {
+          value: "pass:bots/adoptium/azure/azure-client-id",
+        },
+        orgs.newRepoSecret('AZURE_CLIENT_ID_OIDC') {
+          value: "pass:bots/adoptium/azure/azure-client-id-oidc",
+        },
+        orgs.newRepoSecret('AZURE_CLIENT_SECRET') {
+          value: "pass:bots/adoptium/azure/azure-client-secret",
+        },
+        orgs.newRepoSecret('AZURE_SUBSCRIPTION_ID') {
+          value: "pass:bots/adoptium/azure/azure-subscription-id",
+        },
+        orgs.newRepoSecret('AZURE_TENANT_ID') {
+          value: "pass:bots/adoptium/azure/azure-tenant-id",
+        },
+      ],
+    },
     orgs.newRepo('aqa-systemtest') {
       allow_update_branch: false,
       default_branch: "master",
