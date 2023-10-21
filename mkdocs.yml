@@ -4,6 +4,9 @@ strict: false
 
 site_url: https://adoptium.github.io/.eclipsefdn/
 
+repo_name: adoptium/.eclipsefdn
+repo_url: https://github.com/adoptium/.eclipsefdn/
+
 docs_dir: ./docs
 site_dir: ./_site
 
