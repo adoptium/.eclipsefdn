@@ -23,7 +23,6 @@ local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
 orgs.newOrg('adoptium') {
   settings+: {
     blog: "https://adoptium.net",
-    default_repository_permission: "none",
     description: "The Adoptium Working Group promotes and supports high-quality runtimes and associated technology for use across the Java ecosystem",
     name: "Eclipse Adoptium",
     readers_can_create_discussions: true,
