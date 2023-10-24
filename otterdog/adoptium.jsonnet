@@ -762,7 +762,6 @@ orgs.newOrg('adoptium') {
           required_status_checks+: [
             "call-adoptium-verifier / validate"
           ],
-          requires_pull_request: false,
         },
       ],
     },
