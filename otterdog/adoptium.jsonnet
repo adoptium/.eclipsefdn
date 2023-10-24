@@ -758,7 +758,7 @@ orgs.newOrg('adoptium') {
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
-          required_approving_review_count: null,
+          required_approving_review_count: 1,
           required_status_checks+: [
             "call-adoptium-verifier / validate"
           ],
