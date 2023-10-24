@@ -236,18 +236,6 @@ orgs.newOrg('adoptium') {
         },
       ],
       branch_protection_rules: [
-        orgs.newBranchProtectionRule('marketplace') {
-          required_approving_review_count: 1,
-          required_status_checks+: [
-            "build"
-          ],
-        },
-        orgs.newBranchProtectionRule('marketplace-production') {
-          required_approving_review_count: 1,
-          required_status_checks+: [
-            "build"
-          ],
-        },
         orgs.newBranchProtectionRule('production') {
           required_approving_review_count: 1,
           required_status_checks+: [
