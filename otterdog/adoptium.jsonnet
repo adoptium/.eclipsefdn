@@ -571,6 +571,7 @@ orgs.newOrg('adoptium') {
       },
     },
     orgs.newRepo('github-release-scripts') {
+      allow_auto_merge: true,
       allow_update_branch: false,
       default_branch: "master",
       delete_branch_on_merge: false,
