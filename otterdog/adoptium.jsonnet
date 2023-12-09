@@ -655,23 +655,6 @@ orgs.newOrg('adoptium') {
         orgs.newBranchProtectionRule('master'),
       ],
     },
-    orgs.newRepo('jdk22') {
-      allow_update_branch: false,
-      default_branch: "master",
-      dependabot_security_updates_enabled: true,
-      secret_scanning: "disabled",
-      secret_scanning_push_protection: "disabled",
-      web_commit_signoff_required: false,
-    },
-    orgs.newRepo('temurin23-binaries') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
-      description: "Temurin 22 binaries",
-      has_issues: false,
-      web_commit_signoff_required: false,
-    },
     newMirrorRepo('jdk') {
       description: "This repo is an unmodified mirror of source code obtained from OpenJDK. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version that is available at https://adoptium.net.",
     },
@@ -707,6 +690,7 @@ orgs.newOrg('adoptium') {
     newMirrorRepo('jdk20u') {},
     newMirrorRepo('jdk21') {},
     newMirrorRepo('jdk21u') {},
+    newMirrorRepo('jdk22') {},
     newMirrorRepo('jdk8u') {},
     newMirrorRepo('jdk8u_hg') {
       archived: true,
@@ -1005,6 +989,15 @@ orgs.newOrg('adoptium') {
       workflows+: {
         default_workflow_permissions: "write",
       },
+    },
+    orgs.newRepo('temurin23-binaries') {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      dependabot_security_updates_enabled: true,
+      description: "Temurin 23 binaries",
+      has_issues: false,
+      web_commit_signoff_required: false,
     },
     orgs.newRepo('temurin8-binaries') {
       allow_merge_commit: true,
