@@ -690,6 +690,7 @@ orgs.newOrg('adoptium') {
     newMirrorRepo('jdk20u') {},
     newMirrorRepo('jdk21') {},
     newMirrorRepo('jdk21u') {},
+    newMirrorRepo('jdk22') {},
     newMirrorRepo('jdk8u') {},
     newMirrorRepo('jdk8u_hg') {
       archived: true,
@@ -988,6 +989,15 @@ orgs.newOrg('adoptium') {
       workflows+: {
         default_workflow_permissions: "write",
       },
+    },
+    orgs.newRepo('temurin23-binaries') {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      dependabot_security_updates_enabled: true,
+      description: "Temurin 23 binaries",
+      has_issues: false,
+      web_commit_signoff_required: false,
     },
     orgs.newRepo('temurin8-binaries') {
       allow_merge_commit: true,
