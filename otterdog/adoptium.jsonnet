@@ -622,6 +622,9 @@ orgs.newOrg('adoptium') {
         orgs.newRepoSecret('DOCKER_USERNAME') {
           value: "pass:bots/adoptium/docker.com/username",
         },
+        orgs.newRepoSecret('DOCKER_TOKEN') {
+          value: "pass:bots/adoptium/docker.com/token",
+        },
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
