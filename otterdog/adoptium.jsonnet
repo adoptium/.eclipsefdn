@@ -190,6 +190,27 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
+    orgs.newRepo('adoptium.net-redesign') {
+      allow_auto_merge: true,
+      allow_update_branch: false,
+      dependabot_security_updates_enabled: true,
+      description: "Adoptium Website",
+      homepage: "https://adoptium.net",
+      topics+: [
+        "hacktoberfest"
+      ],
+      web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+          // required_status_checks+: [
+          //   "Lint Code Base",
+          //   "Run CI",
+          //   "netlify:netlify/eclipsefdn-adoptium/deploy-preview"
+          // ],
+        },
+      ],
+    },
     newMirrorRepo('alpine-jdk8u') {},
     orgs.newRepo('api.adoptium.net') {
       allow_merge_commit: true,
