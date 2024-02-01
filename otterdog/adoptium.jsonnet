@@ -203,11 +203,11 @@ orgs.newOrg('adoptium') {
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
-          // required_status_checks+: [
-          //   "Lint Code Base",
-          //   "Run CI",
-          //   "netlify:netlify/eclipsefdn-adoptium/deploy-preview"
-          // ],
+           required_status_checks+: [
+             "Lint Code Base",
+             "Run CI",
+             "netlify:netlify/adoptium-rewrite/deploy-preview"
+           ],
         },
       ],
     },
