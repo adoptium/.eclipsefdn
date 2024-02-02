@@ -195,7 +195,7 @@ orgs.newOrg('adoptium') {
       allow_update_branch: false,
       dependabot_security_updates_enabled: true,
       description: "Adoptium Website",
-      homepage: "https://adoptium.net",
+      homepage: "https://adoptium-rewrite.netlify.app/",
       topics+: [
         "hacktoberfest"
       ],
