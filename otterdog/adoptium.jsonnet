@@ -210,6 +210,11 @@ orgs.newOrg('adoptium') {
            ],
         },
       ],
+      secrets: [
+        orgs.newRepoSecret('CODECOV_TOKEN') {
+          value: "pass:bots/adoptium/codecov/adoptium-redesign-token",
+        },
+      ],
     },
     newMirrorRepo('alpine-jdk8u') {},
     orgs.newRepo('api.adoptium.net') {
