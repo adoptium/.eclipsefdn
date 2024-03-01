@@ -118,22 +118,6 @@ orgs.newOrg('adoptium') {
         orgs.newBranchProtectionRule('master'),
       ],
     },
-    orgs.newRepo('aarch32-jdk8u') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      description: "This repo is an unmodified mirror of source code obtained from OpenJDK. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version that is available at https://adoptium.net.",
-      web_commit_signoff_required: false,
-    },
-    orgs.newRepo('aarch32-jdk8u_hg') {
-      archived: true,
-      default_branch: "master",
-      description: "Mirror of the Mercurial Forest for the Linux Aarch32 port from",
-      homepage: "https://hg.openjdk.java.net/aarch32-port/jdk8u",
-      web_commit_signoff_required: false,
-    },
     orgs.newRepo('adoptium') {
       allow_merge_commit: true,
       allow_update_branch: false,
@@ -205,7 +189,6 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
-    newMirrorRepo('alpine-jdk8u') {},
     orgs.newRepo('api.adoptium.net') {
       allow_merge_commit: true,
       allow_squash_merge: false,
@@ -626,6 +609,13 @@ orgs.newOrg('adoptium') {
         orgs.newBranchProtectionRule('master'),
       ],
     },
+    newMirrorRepo('aarch32-jdk8u') {},
+    newMirrorRepo('aarch32-jdk8u_hg') {
+      archived: true,
+      description: "Mirror of the Mercurial Forest for the Linux Aarch32 port from",
+      homepage: "https://hg.openjdk.java.net/aarch32-port/jdk8u",
+    },
+    newMirrorRepo('alpine-jdk8u') {},
     newMirrorRepo('jdk') {},
     newMirrorRepo('jdk11u') {},
     newMirrorRepo('riscv-port-jdk11u') {
