@@ -684,24 +684,12 @@ orgs.newOrg('adoptium') {
         orgs.newBranchProtectionRule('master'),
       ],
     },
-    newMirrorRepo('jdk') {
-      description: "This repo is an unmodified mirror of source code obtained from OpenJDK. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version that is available at https://adoptium.net.",
-    },
-    newMirrorRepo('jdk11u') {
-    },
+    newMirrorRepo('jdk') {},
+    newMirrorRepo('jdk11u') {},
     newMirrorRepo('riscv-port-jdk11u') {
+      default_branch: 'riscv-port'
     },
-    orgs.newRepo('jdk11u-fast-startup-incubator') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
-      web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      }
-    },
+    newMirrorRepo('jdk11u-fast-startup-incubator') {},
     newMirrorRepo('jdk16u') {},
     newMirrorRepo('jdk17') {
       archived: true,
