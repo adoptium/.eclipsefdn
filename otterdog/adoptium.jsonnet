@@ -34,7 +34,7 @@ local newBinaryRepo(repoName) = orgs.newRepo(repoName) {
   allow_merge_commit: true,
   allow_update_branch: false,
   delete_branch_on_merge: false,
-  description: "Temurin %s binaries" % [extractVersion(repoName)],  // Corrected string concatenation
+  description: "Temurin %s binaries" % [extractVersion(repoName)],
   has_issues: false,
   web_commit_signoff_required: false,
 };
