@@ -689,6 +689,8 @@ orgs.newOrg('adoptium') {
     },
     newMirrorRepo('jdk11u') {
     },
+    newMirrorRepo('riscv-port-jdk11u') {
+    },
     orgs.newRepo('jdk11u-fast-startup-incubator') {
       allow_merge_commit: true,
       allow_update_branch: false,
