@@ -20,6 +20,25 @@ local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
   },
 };
 
+local extractVersion(name) =
+  local prefix = "temurin";
+  local suffix = "-binaries";
+  local versionStart = std.length(prefix);
+  local versionEnd = std.length(name) - std.length(suffix);
+  if std.startsWith(name, prefix) && std.endsWith(name, suffix) then
+    std.substr(name, versionStart, versionEnd - versionStart)
+  else
+    "unknown";
+
+local newBinaryRepo(repoName) = orgs.newRepo(repoName) {
+  allow_merge_commit: true,
+  allow_update_branch: false,
+  delete_branch_on_merge: false,
+  description: "Temurin %s binaries" % [extractVersion(repoName)],
+  has_issues: false,
+  web_commit_signoff_required: false,
+};
+
 orgs.newOrg('adoptium') {
   settings+: {
     blog: "https://adoptium.net",
@@ -33,9 +52,6 @@ orgs.newOrg('adoptium') {
     ],
     twitter_username: "adoptium",
     web_commit_signoff_required: false,
-    workflows+: {
-      default_workflow_permissions: "write",
-    },
   },
   webhooks+: [
     orgs.newOrgWebhook('https://app.codacy.com/2.0/events/gh/organization') {
@@ -69,9 +85,6 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       dependabot_alerts_enabled: false,
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main'),
       ],
@@ -83,9 +96,6 @@ orgs.newOrg('adoptium') {
       dependabot_alerts_enabled: false,
       description: "Adoptium Incubator project",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
     },
     orgs.newRepo('STF') {
       allow_update_branch: false,
@@ -94,9 +104,6 @@ orgs.newOrg('adoptium') {
       description: "The System Test Framework for executing https://github.com/adoptium/aqa-systemtest",
       homepage: "",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
     },
     orgs.newRepo('TKG') {
       allow_merge_commit: true,
@@ -107,9 +114,6 @@ orgs.newOrg('adoptium') {
       description: "TestKitGen (TKG)",
       homepage: "",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -122,9 +126,6 @@ orgs.newOrg('adoptium') {
       dependabot_alerts_enabled: false,
       description: "This repo is an unmodified mirror of source code obtained from OpenJDK. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version that is available at https://adoptium.net.",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
     },
     orgs.newRepo('aarch32-jdk8u_hg') {
       archived: true,
@@ -132,9 +133,6 @@ orgs.newOrg('adoptium') {
       description: "Mirror of the Mercurial Forest for the Linux Aarch32 port from",
       homepage: "https://hg.openjdk.java.net/aarch32-port/jdk8u",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
     },
     orgs.newRepo('adoptium') {
       allow_merge_commit: true,
@@ -151,9 +149,6 @@ orgs.newOrg('adoptium') {
         "temurin"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
     },
     orgs.newRepo('adoptium-support') {
       allow_update_branch: false,
@@ -162,9 +157,6 @@ orgs.newOrg('adoptium') {
       description: "For end-user problems reported with our binary distributions",
       has_discussions: true,
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
     },
     orgs.newRepo('adoptium.net') {
       allow_auto_merge: true,
@@ -176,9 +168,6 @@ orgs.newOrg('adoptium') {
         "hacktoberfest"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -238,7 +227,6 @@ orgs.newOrg('adoptium') {
       web_commit_signoff_required: false,
       workflows+: {
         allowed_actions: "selected",
-        default_workflow_permissions: "write",
       },
       secrets: [
         orgs.newRepoSecret('AZURE_CLIENT_ID') {
@@ -298,7 +286,6 @@ orgs.newOrg('adoptium') {
       web_commit_signoff_required: false,
       workflows+: {
         allowed_actions: "selected",
-        default_workflow_permissions: "write",
       },
       secrets: [
         orgs.newRepoSecret('AZURE_CLIENT_ID') {
@@ -338,9 +325,6 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       description: "Java load testing and other full system application tests",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
     },
     orgs.newRepo('aqa-test-tools') {
       allow_update_branch: false,
@@ -350,9 +334,6 @@ orgs.newOrg('adoptium') {
       description: "Home of Test Results Summary Service (TRSS) and PerfNext.  These tools are designed to improve our ability to monitor and triage tests at the Adoptium project.  The code is generic enough that it is extensible for use by any project that needs to monitor multiple CI servers and aggregate their results.",
       homepage: "",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
     },
     orgs.newRepo('aqa-tests') {
       allow_update_branch: false,
@@ -367,9 +348,6 @@ orgs.newOrg('adoptium') {
         "tests"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       webhooks: [
         orgs.newRepoWebhook('https://ci.adoptium.net/ghprbhook/') {
           events+: [
@@ -403,9 +381,6 @@ orgs.newOrg('adoptium') {
         "openjdk"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -426,9 +401,6 @@ orgs.newOrg('adoptium') {
       dependabot_security_updates_enabled: true,
       description: "Github action for building JDKs that utilizes the build scripts from the openjdk-build repo",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
     },
     orgs.newRepo('bumblebench') {
       allow_update_branch: false,
@@ -443,9 +415,6 @@ orgs.newOrg('adoptium') {
         "performance"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
     },
     orgs.newRepo('ci-jenkins-pipelines') {
       allow_auto_merge: true,
@@ -461,9 +430,6 @@ orgs.newOrg('adoptium') {
         "pipeline"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       webhooks: [
         orgs.newRepoWebhook('https://ci.adoptium.net/github-webhook/') {
           active: false,
@@ -506,9 +472,6 @@ orgs.newOrg('adoptium') {
         "hacktoberfest"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_status_checks+: [
@@ -532,9 +495,6 @@ orgs.newOrg('adoptium') {
         "react"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -555,9 +515,6 @@ orgs.newOrg('adoptium') {
         "hacktoberfest"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       webhooks: [
         orgs.newRepoWebhook('https://app.codacy.com/events/github/3b0e019a32bb4307a776e60cff5b031c') {
           content_type: "json",
@@ -571,9 +528,6 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('documentation-services') {
       archived: true,
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       webhooks: [
         orgs.newRepoWebhook('https://app.codacy.com/events/github/695d0c3446bd42d58c11a7ee026d9196') {
           content_type: "json",
@@ -592,9 +546,6 @@ orgs.newOrg('adoptium') {
       dependabot_alerts_enabled: false,
       description: "Eclipse Migration Toolkit for Java",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
     },
     orgs.newRepo('github-release-scripts') {
       allow_auto_merge: true,
@@ -608,9 +559,6 @@ orgs.newOrg('adoptium') {
         "github"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -631,9 +579,6 @@ orgs.newOrg('adoptium') {
         "nagios"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       webhooks: [
         orgs.newRepoWebhook('https://ci.adoptium.net/github-webhook/') {
           events+: [
@@ -669,9 +614,6 @@ orgs.newOrg('adoptium') {
         "installer"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       secrets: [
         orgs.newRepoSecret('ARTIFACTORY_PASSWORD') {
           value: "pass:bots/adoptium/artifactory/password",
@@ -727,9 +669,6 @@ orgs.newOrg('adoptium') {
         "jenkins-helper"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -747,9 +686,6 @@ orgs.newOrg('adoptium') {
         "hacktoberfest"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       secrets: [
         orgs.newRepoSecret('ARTIFACTORY_PASSWORD') {
           value: "pass:bots/adoptium/artifactory/password",
@@ -768,9 +704,6 @@ orgs.newOrg('adoptium') {
       has_issues: false,
       homepage: "https://marketplace-api.adoptium.net/",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       secrets: [
         orgs.newRepoSecret('TEMURIN_RSA_PRIVATE') {
           value: "pass:bots/adoptium/github.com/temurin-rsa-private",
@@ -793,9 +726,6 @@ orgs.newOrg('adoptium') {
       description: "OpenJDK source mirroring scripts used by",
       homepage: "https://ci.adoptium.net/view/git-mirrors/job/git-mirrors/job/adoptium/",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -805,9 +735,6 @@ orgs.newOrg('adoptium') {
       description: "Development of the website has moved to https://github.com/adoptium/website-v2",
       homepage: "https://github.com/adoptium/website-v2",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: null,
@@ -828,9 +755,6 @@ orgs.newOrg('adoptium') {
         "aqa-tests"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
     },
     orgs.newRepo('temurin') {
       allow_auto_merge: true,
@@ -840,9 +764,6 @@ orgs.newOrg('adoptium') {
       has_wiki: false,
       homepage: "https://adoptium.net/temurin",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -867,9 +788,6 @@ orgs.newOrg('adoptium') {
         "temurin"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       webhooks: [
         orgs.newRepoWebhook('https://api.codacy.com/events/github/c7be1d760de3418f836fcfefa494c486') {
           content_type: "json",
@@ -909,125 +827,21 @@ orgs.newOrg('adoptium') {
       description: "A tool to generate NIST CPE directory entries for Eclipse Temurin using the Adoptium API.",
       homepage: "https://adoptium.net/temurin",
       web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
         },
       ],
     },
-    orgs.newRepo('temurin11-binaries') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      description: "Temurin 11 binaries",
-      has_issues: false,
-      web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
-    },
-    orgs.newRepo('temurin16-binaries') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      description: "Temurin 16 binaries",
-      has_issues: false,
-      web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
-    },
-    orgs.newRepo('temurin17-binaries') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      description: "Temurin 17 binaries",
-      has_issues: false,
-      web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
-    },
-    orgs.newRepo('temurin18-binaries') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      description: "Temurin 18 binaries",
-      has_issues: false,
-      web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
-    },
-    orgs.newRepo('temurin19-binaries') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      description: "Temurin 19 binaries",
-      has_issues: false,
-      web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
-    },
-    orgs.newRepo('temurin20-binaries') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
-      description: "Temurin 20 binaries",
-      has_issues: false,
-      web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
-    },
-    orgs.newRepo('temurin21-binaries') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
-      description: "Temurin 21 binaries",
-      has_issues: false,
-      web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
-    },
-    orgs.newRepo('temurin22-binaries') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
-      description: "Temurin 22 binaries",
-      has_issues: false,
-      web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
-    },
-    orgs.newRepo('temurin23-binaries') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
-      description: "Temurin 23 binaries",
-      has_issues: false,
-      web_commit_signoff_required: false,
-    },
-    orgs.newRepo('temurin8-binaries') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      description: "Temurin 8 binaries",
-      has_issues: false,
-      web_commit_signoff_required: false,
-      workflows+: {
-        default_workflow_permissions: "write",
-      },
-    },
+    newBinaryRepo('temurin11-binaries') {},
+    newBinaryRepo('temurin16-binaries') {},
+    newBinaryRepo('temurin17-binaries') {},
+    newBinaryRepo('temurin18-binaries') {},
+    newBinaryRepo('temurin19-binaries') {},
+    newBinaryRepo('temurin20-binaries') {},
+    newBinaryRepo('temurin21-binaries') {},
+    newBinaryRepo('temurin22-binaries') {},
+    newBinaryRepo('temurin23-binaries') {},
+    newBinaryRepo('temurin8-binaries') {},
   ],
 }
