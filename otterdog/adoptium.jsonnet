@@ -2,6 +2,7 @@ local orgsOrig = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
 // Set Adoptium specific defaults here
 local newAdoptiumRepo(name) = orgsOrig.newRepo(name) {
+  dependabot_security_updates_enabled: true,
   web_commit_signoff_required: false,
 };
 
@@ -16,6 +17,7 @@ local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
   default_branch: "master",
   delete_branch_on_merge: false,
   dependabot_alerts_enabled: false,
+  dependabot_security_updates_enabled: false,
   has_issues: false,
   has_projects: false,
   has_wiki: false,
@@ -39,11 +41,13 @@ local extractVersion(name) =
     "unknown";
 
 local newBinaryRepo(repoName) = orgs.newRepo(repoName) {
-  allow_merge_commit: true,
-  allow_update_branch: false,
-  delete_branch_on_merge: false,
   description: "Temurin %s binaries" % [extractVersion(repoName)],
+  dependabot_alerts_enabled: false,
+  dependabot_security_updates_enabled: false,
   has_issues: false,
+  has_projects: false,
+  has_wiki: false,
+  homepage: "https://adoptium.net",
 };
 
 orgs.newOrg('adoptium') {
@@ -88,18 +92,12 @@ orgs.newOrg('adoptium') {
   _repositories+:: [
     orgs.newRepo('.github') {
       allow_auto_merge: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main'),
       ],
     },
     orgs.newRepo('Incubator') {
       allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
       description: "Adoptium Incubator project",
     },
     orgs.newRepo('STF') {
@@ -113,7 +111,6 @@ orgs.newOrg('adoptium') {
       allow_update_branch: false,
       default_branch: "master",
       delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
       description: "TestKitGen (TKG)",
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
@@ -123,7 +120,6 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: true,
       allow_update_branch: false,
       delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
       has_discussions: true,
       homepage: "https://adoptium.net",
       topics+: [
@@ -135,16 +131,12 @@ orgs.newOrg('adoptium') {
       ],
     },
     orgs.newRepo('adoptium-support') {
-      allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: false,
       description: "For end-user problems reported with our binary distributions",
       has_discussions: true,
     },
     orgs.newRepo('adoptium.net') {
       allow_auto_merge: true,
-      allow_update_branch: false,
-      dependabot_security_updates_enabled: true,
       description: "Adoptium Website",
       homepage: "https://adoptium.net",
       topics+: [
@@ -163,8 +155,6 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('adoptium.net-redesign') {
       allow_auto_merge: true,
-      allow_update_branch: false,
-      dependabot_security_updates_enabled: true,
       description: "Adoptium Website",
       homepage: "https://adoptium-rewrite.netlify.app/",
       topics+: [
@@ -191,7 +181,6 @@ orgs.newOrg('adoptium') {
       allow_squash_merge: false,
       allow_update_branch: false,
       delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
       description: "Adoptium API 🚀",
       homepage: "https://api.adoptium.net",
       topics+: [
@@ -248,8 +237,6 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: true,
       allow_squash_merge: false,
       allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
       description: "Adoptium Marketplace API 🚀",
       homepage: "https://marketplace-api.adoptium.net",
       topics+: [
@@ -307,14 +294,12 @@ orgs.newOrg('adoptium') {
       allow_update_branch: false,
       default_branch: "master",
       delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
       description: "Home of Test Results Summary Service (TRSS) and PerfNext.  These tools are designed to improve our ability to monitor and triage tests at the Adoptium project.  The code is generic enough that it is extensible for use by any project that needs to monitor multiple CI servers and aggregate their results.",
     },
     orgs.newRepo('aqa-tests') {
       allow_update_branch: false,
       default_branch: "master",
       delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
       description: "Home of test infrastructure for Adoptium builds",
       homepage: "https://adoptium.net/aqavit",
       topics+: [
@@ -370,15 +355,11 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: true,
       allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
       description: "Github action for building JDKs that utilizes the build scripts from the openjdk-build repo",
     },
     orgs.newRepo('bumblebench') {
       allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
       description: "A microbenchmarking test framework for Eclipse Adoptium",
       topics+: [
         "benchmark",
@@ -388,10 +369,7 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('ci-jenkins-pipelines') {
       allow_auto_merge: true,
-      allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
       description: "jenkins pipeline build scripts",
       topics+: [
         "hacktoberfest",
@@ -426,8 +404,6 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('containers') {
       allow_auto_merge: true,
-      allow_update_branch: false,
-      dependabot_alerts_enabled: false,
       description: "Repo containing the dockerfiles and scripts to produce the official eclipse-temurin containers.",
       has_wiki: false,
       homepage: "https://hub.docker.com/_/eclipse-temurin/",
@@ -449,9 +425,6 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('dash.adoptium.net') {
       allow_auto_merge: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
       description: "Download tracking dashboard",
       homepage: "https://dash.adoptium.net/",
       topics+: [
@@ -503,18 +476,12 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('emt4j') {
       allow_merge_commit: true,
-      allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
       description: "Eclipse Migration Toolkit for Java",
     },
     orgs.newRepo('github-release-scripts') {
       allow_auto_merge: true,
-      allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
       description: "Scripts for release artefacts to GitHub releases",
       topics+: [
         "github"
@@ -524,10 +491,7 @@ orgs.newOrg('adoptium') {
       ],
     },
     orgs.newRepo('infrastructure') {
-      allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
       description: "This repo contains all information about machine maintenance.",
       topics+: [
         "ansible",
@@ -561,11 +525,8 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('installer') {
       allow_auto_merge: true,
-      allow_merge_commit: true,
       default_branch: "master",
-      dependabot_security_updates_enabled: true,
       description: "Installer scripts for Eclipse Temurin binaries",
-      squash_merge_commit_title: "PR_TITLE",
       topics+: [
         "hacktoberfest",
         "installer"
@@ -612,7 +573,9 @@ orgs.newOrg('adoptium') {
       archived: true,
     },
     newMirrorRepo('jdk20u') {},
-    newMirrorRepo('jdk21') {},
+    newMirrorRepo('jdk21') {
+      archived: true
+    },
     newMirrorRepo('jdk21u') {},
     newMirrorRepo('jdk22') {},
     newMirrorRepo('jdk8u') {},
@@ -620,9 +583,7 @@ orgs.newOrg('adoptium') {
       archived: true,
     },
     orgs.newRepo('jenkins-helper') {
-      allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: false,
       description: "Jenkins Node helper API and helper jobs ",
       topics+: [
         "adoptium",
@@ -636,10 +597,7 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('jmc-build') {
       allow_merge_commit: true,
-      allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
       description: "Contains the Adoptium specific source code overrides and build pipeline script for the Java Mission Control project.",
       has_wiki: false,
       topics+: [
@@ -657,8 +615,6 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('marketplace-data') {
       allow_auto_merge: true,
       allow_merge_commit: true,
-      allow_update_branch: false,
-      dependabot_security_updates_enabled: true,
       description: "The official source of Marketplace data (JSON) for feeding Eclipse Temurin binaries to the Marketplace API 💾",
       has_issues: false,
       homepage: "https://marketplace-api.adoptium.net/",
@@ -677,10 +633,7 @@ orgs.newOrg('adoptium') {
       ],
     },
     orgs.newRepo('mirror-scripts') {
-      allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
       description: "OpenJDK source mirroring scripts used by",
       homepage: "https://ci.adoptium.net/view/git-mirrors/job/git-mirrors/job/adoptium/",
       branch_protection_rules: [
@@ -700,10 +653,7 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('run-aqa') {
       allow_merge_commit: true,
-      allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
       description: "Repository for the Github Action that enables the running of the Adoptium Quality Assurance (AQA) tests",
       topics+: [
         "adoptopenjdk",
@@ -712,8 +662,6 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('temurin') {
       allow_auto_merge: true,
-      allow_update_branch: false,
-      dependabot_security_updates_enabled: true,
       description: "Eclipse Temurin™ project assets",
       has_wiki: false,
       homepage: "https://adoptium.net/temurin",
@@ -725,10 +673,7 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('temurin-build') {
       allow_auto_merge: true,
-      allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
       description: "Eclipse Temurin™ build scripts - common across all releases/versions",
       topics+: [
         "cacert",
@@ -773,8 +718,6 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('temurin-cpe-generator') {
       allow_auto_merge: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
       description: "A tool to generate NIST CPE directory entries for Eclipse Temurin using the Adoptium API.",
       homepage: "https://adoptium.net/temurin",
       branch_protection_rules: [
