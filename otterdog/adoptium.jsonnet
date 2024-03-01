@@ -689,7 +689,7 @@ orgs.newOrg('adoptium') {
     newMirrorRepo('riscv-port-jdk11u') {
       default_branch: 'riscv-port'
     },
-    orgs.newRepo('jdk11u-fast-startup-incubator') {},
+    newMirrorRepo('jdk11u-fast-startup-incubator') {},
     newMirrorRepo('jdk16u') {},
     newMirrorRepo('jdk17') {
       archived: true,
