@@ -1,4 +1,13 @@
-local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
+local orgsOrig = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
+
+// Set Adoptium specific defaults here
+local newAdoptiumRepo(name) = orgsOrig.newRepo(name) {
+  web_commit_signoff_required: false,
+};
+
+local orgs = (import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet') + {
+  newRepo::newAdoptiumRepo
+};
 
 local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
   allow_merge_commit: true,
@@ -13,7 +22,6 @@ local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
   homepage: "https://adoptium.net",
   secret_scanning: "disabled",
   secret_scanning_push_protection: "disabled",
-  web_commit_signoff_required: false,
   description: "This repo is an unmodified mirror of source code obtained from OpenJDK. It has been and may still be used to create builds that are untested and incompatible with the Java SE specification. You should not deploy or write to this code, but instead use the tested and certified Java SE compatible version that is available at https://adoptium.net.",
   workflows+: {
     enabled: false,
@@ -36,7 +44,6 @@ local newBinaryRepo(repoName) = orgs.newRepo(repoName) {
   delete_branch_on_merge: false,
   description: "Temurin %s binaries" % [extractVersion(repoName)],
   has_issues: false,
-  web_commit_signoff_required: false,
 };
 
 orgs.newOrg('adoptium') {
@@ -84,7 +91,6 @@ orgs.newOrg('adoptium') {
       allow_update_branch: false,
       delete_branch_on_merge: false,
       dependabot_alerts_enabled: false,
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main'),
       ],
@@ -95,15 +101,12 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       dependabot_alerts_enabled: false,
       description: "Adoptium Incubator project",
-      web_commit_signoff_required: false,
     },
     orgs.newRepo('STF') {
       allow_update_branch: false,
       default_branch: "master",
       delete_branch_on_merge: false,
       description: "The System Test Framework for executing https://github.com/adoptium/aqa-systemtest",
-      homepage: "",
-      web_commit_signoff_required: false,
     },
     orgs.newRepo('TKG') {
       allow_merge_commit: true,
@@ -112,8 +115,6 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       dependabot_security_updates_enabled: true,
       description: "TestKitGen (TKG)",
-      homepage: "",
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -132,7 +133,6 @@ orgs.newOrg('adoptium') {
         "java",
         "temurin"
       ],
-      web_commit_signoff_required: false,
     },
     orgs.newRepo('adoptium-support') {
       allow_update_branch: false,
@@ -140,7 +140,6 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       description: "For end-user problems reported with our binary distributions",
       has_discussions: true,
-      web_commit_signoff_required: false,
     },
     orgs.newRepo('adoptium.net') {
       allow_auto_merge: true,
@@ -151,7 +150,6 @@ orgs.newOrg('adoptium') {
       topics+: [
         "hacktoberfest"
       ],
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -172,7 +170,6 @@ orgs.newOrg('adoptium') {
       topics+: [
         "hacktoberfest"
       ],
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -207,7 +204,6 @@ orgs.newOrg('adoptium') {
         "swagger",
         "temurin"
       ],
-      web_commit_signoff_required: false,
       workflows+: {
         allowed_actions: "selected",
       },
@@ -266,7 +262,6 @@ orgs.newOrg('adoptium') {
         "swagger",
         "temurin"
       ],
-      web_commit_signoff_required: false,
       workflows+: {
         allowed_actions: "selected",
       },
@@ -307,7 +302,6 @@ orgs.newOrg('adoptium') {
       default_branch: "master",
       delete_branch_on_merge: false,
       description: "Java load testing and other full system application tests",
-      web_commit_signoff_required: false,
     },
     orgs.newRepo('aqa-test-tools') {
       allow_update_branch: false,
@@ -315,8 +309,6 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       dependabot_security_updates_enabled: true,
       description: "Home of Test Results Summary Service (TRSS) and PerfNext.  These tools are designed to improve our ability to monitor and triage tests at the Adoptium project.  The code is generic enough that it is extensible for use by any project that needs to monitor multiple CI servers and aggregate their results.",
-      homepage: "",
-      web_commit_signoff_required: false,
     },
     orgs.newRepo('aqa-tests') {
       allow_update_branch: false,
@@ -330,7 +322,6 @@ orgs.newOrg('adoptium') {
         "openjdk-tests",
         "tests"
       ],
-      web_commit_signoff_required: false,
       webhooks: [
         orgs.newRepoWebhook('https://ci.adoptium.net/ghprbhook/') {
           events+: [
@@ -363,7 +354,6 @@ orgs.newOrg('adoptium') {
         "gatsby",
         "openjdk"
       ],
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -383,7 +373,6 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       dependabot_security_updates_enabled: true,
       description: "Github action for building JDKs that utilizes the build scripts from the openjdk-build repo",
-      web_commit_signoff_required: false,
     },
     orgs.newRepo('bumblebench') {
       allow_update_branch: false,
@@ -391,13 +380,11 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       dependabot_security_updates_enabled: true,
       description: "A microbenchmarking test framework for Eclipse Adoptium",
-      homepage: "",
       topics+: [
         "benchmark",
         "java",
         "performance"
       ],
-      web_commit_signoff_required: false,
     },
     orgs.newRepo('ci-jenkins-pipelines') {
       allow_auto_merge: true,
@@ -406,13 +393,11 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       dependabot_alerts_enabled: false,
       description: "jenkins pipeline build scripts",
-      homepage: "",
       topics+: [
         "hacktoberfest",
         "jenkins",
         "pipeline"
       ],
-      web_commit_signoff_required: false,
       webhooks: [
         orgs.newRepoWebhook('https://ci.adoptium.net/github-webhook/') {
           active: false,
@@ -454,7 +439,6 @@ orgs.newOrg('adoptium') {
         "dockerhub",
         "hacktoberfest"
       ],
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_status_checks+: [
@@ -477,7 +461,6 @@ orgs.newOrg('adoptium') {
         "openjdk",
         "react"
       ],
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -492,12 +475,10 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('documentation') {
       archived: true,
       description: "The new documentation for adoptium.net will be initially created in this repo",
-      homepage: "",
       topics+: [
         "documentation",
         "hacktoberfest"
       ],
-      web_commit_signoff_required: false,
       webhooks: [
         orgs.newRepoWebhook('https://app.codacy.com/events/github/3b0e019a32bb4307a776e60cff5b031c') {
           content_type: "json",
@@ -510,7 +491,6 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('documentation-services') {
       archived: true,
-      web_commit_signoff_required: false,
       webhooks: [
         orgs.newRepoWebhook('https://app.codacy.com/events/github/695d0c3446bd42d58c11a7ee026d9196') {
           content_type: "json",
@@ -528,7 +508,6 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       dependabot_alerts_enabled: false,
       description: "Eclipse Migration Toolkit for Java",
-      web_commit_signoff_required: false,
     },
     orgs.newRepo('github-release-scripts') {
       allow_auto_merge: true,
@@ -537,11 +516,9 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       dependabot_security_updates_enabled: true,
       description: "Scripts for release artefacts to GitHub releases",
-      homepage: "",
       topics+: [
         "github"
       ],
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -552,7 +529,6 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       dependabot_security_updates_enabled: true,
       description: "This repo contains all information about machine maintenance.",
-      homepage: "",
       topics+: [
         "ansible",
         "backup",
@@ -561,7 +537,6 @@ orgs.newOrg('adoptium') {
         "infrastructure-systems",
         "nagios"
       ],
-      web_commit_signoff_required: false,
       webhooks: [
         orgs.newRepoWebhook('https://ci.adoptium.net/github-webhook/') {
           events+: [
@@ -590,13 +565,11 @@ orgs.newOrg('adoptium') {
       default_branch: "master",
       dependabot_security_updates_enabled: true,
       description: "Installer scripts for Eclipse Temurin binaries",
-      homepage: "",
       squash_merge_commit_title: "PR_TITLE",
       topics+: [
         "hacktoberfest",
         "installer"
       ],
-      web_commit_signoff_required: false,
       secrets: [
         orgs.newRepoSecret('ARTIFACTORY_PASSWORD') {
           value: "pass:bots/adoptium/artifactory/password",
@@ -651,14 +624,12 @@ orgs.newOrg('adoptium') {
       default_branch: "master",
       delete_branch_on_merge: false,
       description: "Jenkins Node helper API and helper jobs ",
-      homepage: "",
       topics+: [
         "adoptium",
         "groovy",
         "jenkins",
         "jenkins-helper"
       ],
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -671,11 +642,9 @@ orgs.newOrg('adoptium') {
       dependabot_security_updates_enabled: true,
       description: "Contains the Adoptium specific source code overrides and build pipeline script for the Java Mission Control project.",
       has_wiki: false,
-      homepage: "",
       topics+: [
         "hacktoberfest"
       ],
-      web_commit_signoff_required: false,
       secrets: [
         orgs.newRepoSecret('ARTIFACTORY_PASSWORD') {
           value: "pass:bots/adoptium/artifactory/password",
@@ -693,7 +662,6 @@ orgs.newOrg('adoptium') {
       description: "The official source of Marketplace data (JSON) for feeding Eclipse Temurin binaries to the Marketplace API 💾",
       has_issues: false,
       homepage: "https://marketplace-api.adoptium.net/",
-      web_commit_signoff_required: false,
       secrets: [
         orgs.newRepoSecret('TEMURIN_RSA_PRIVATE') {
           value: "pass:bots/adoptium/github.com/temurin-rsa-private",
@@ -715,7 +683,6 @@ orgs.newOrg('adoptium') {
       dependabot_alerts_enabled: false,
       description: "OpenJDK source mirroring scripts used by",
       homepage: "https://ci.adoptium.net/view/git-mirrors/job/git-mirrors/job/adoptium/",
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
@@ -724,7 +691,6 @@ orgs.newOrg('adoptium') {
       archived: true,
       description: "Development of the website has moved to https://github.com/adoptium/website-v2",
       homepage: "https://github.com/adoptium/website-v2",
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: null,
@@ -739,12 +705,10 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       dependabot_security_updates_enabled: true,
       description: "Repository for the Github Action that enables the running of the Adoptium Quality Assurance (AQA) tests",
-      homepage: "",
       topics+: [
         "adoptopenjdk",
         "aqa-tests"
       ],
-      web_commit_signoff_required: false,
     },
     orgs.newRepo('temurin') {
       allow_auto_merge: true,
@@ -753,7 +717,6 @@ orgs.newOrg('adoptium') {
       description: "Eclipse Temurin™ project assets",
       has_wiki: false,
       homepage: "https://adoptium.net/temurin",
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -767,7 +730,6 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       dependabot_security_updates_enabled: true,
       description: "Eclipse Temurin™ build scripts - common across all releases/versions",
-      homepage: "",
       topics+: [
         "cacert",
         "docker-commands",
@@ -777,7 +739,6 @@ orgs.newOrg('adoptium') {
         "shell-script",
         "temurin"
       ],
-      web_commit_signoff_required: false,
       webhooks: [
         orgs.newRepoWebhook('https://api.codacy.com/events/github/c7be1d760de3418f836fcfefa494c486') {
           content_type: "json",
@@ -816,7 +777,6 @@ orgs.newOrg('adoptium') {
       delete_branch_on_merge: false,
       description: "A tool to generate NIST CPE directory entries for Eclipse Temurin using the Adoptium API.",
       homepage: "https://adoptium.net/temurin",
-      web_commit_signoff_required: false,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
