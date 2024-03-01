@@ -21,10 +21,12 @@ local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
 };
 
 local extractVersion(name) =
-  local start = std.findSubstr("temurin", name) + std.length("temurin");
-  local end = std.findSubstr("-binaries", name);
-  if start < end then
-    std.substr(name, start, end - start)
+  local prefix = "temurin";
+  local suffix = "-binaries";
+  local versionStart = std.length(prefix);
+  local versionEnd = std.length(name) - std.length(suffix);
+  if std.startsWith(name, prefix) && std.endsWith(name, suffix) then
+    std.substr(name, versionStart, versionEnd - versionStart)
   else
     "unknown";
 
@@ -32,8 +34,7 @@ local newBinaryRepo(repoName) = orgs.newRepo(repoName) {
   allow_merge_commit: true,
   allow_update_branch: false,
   delete_branch_on_merge: false,
-  dependabot_security_updates_enabled: true,
-  description: "Temurin " + extractVersion(repoName) + " binaries",
+  description: "Temurin %s binaries" % [extractVersion(repoName)],  // Corrected string concatenation
   has_issues: false,
   web_commit_signoff_required: false,
 };
