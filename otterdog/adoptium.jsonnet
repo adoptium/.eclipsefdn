@@ -597,7 +597,6 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('jmc-build') {
       allow_merge_commit: true,
-      default_branch: "master",
       description: "Contains the Adoptium specific source code overrides and build pipeline script for the Java Mission Control project.",
       has_wiki: false,
       topics+: [
