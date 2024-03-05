@@ -726,7 +726,6 @@ orgs.newOrg('adoptium') {
     },
     orgs.newRepo('temurin-vdr-generator') {
       allow_auto_merge: true,
-      default_branch: "main",
       description: "Scripts for generating Vulnerability Disclosure Reports",
       topics+: [
         "secure-dev"
