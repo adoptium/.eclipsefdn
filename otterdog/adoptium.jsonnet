@@ -303,7 +303,6 @@ orgs.newOrg('adoptium') {
       description: "Home of test infrastructure for Adoptium builds",
       homepage: "https://adoptium.net/aqavit",
       topics+: [
-        "hacktoberfest",
         "openjdk-tests",
         "tests"
       ],
@@ -723,6 +722,16 @@ orgs.newOrg('adoptium') {
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
         },
+      ],
+    },
+    orgs.newRepo('temurin-vdr-generator') {
+      allow_auto_merge: true,
+      description: "Scripts for generating Vulnerability Disclosure Reports",
+      topics+: [
+        "secure-dev"
+      ],
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main'),
       ],
     },
     newBinaryRepo('temurin11-binaries') {},
