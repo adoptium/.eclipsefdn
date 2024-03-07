@@ -741,7 +741,6 @@ orgs.newOrg('adoptium') {
       dependabot_security_updates_enabled: true,
       description: "Repository for Adoptium OpenJDK DevKit builds",
       has_issues: false,
-      web_commit_signoff_required: false,
     },
     newBinaryRepo('temurin11-binaries') {},
     newBinaryRepo('temurin16-binaries') {},
