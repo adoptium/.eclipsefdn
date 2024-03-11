@@ -91,6 +91,9 @@ orgs.newOrg('adoptium') {
     },
   ],
   _repositories+:: [
+    orgs.extendRepo('.eclipsefdn') {
+      private_vulnerability_reporting_enabled: true,
+    },
     orgs.newRepo('.github') {
       allow_auto_merge: true,
       branch_protection_rules: [
