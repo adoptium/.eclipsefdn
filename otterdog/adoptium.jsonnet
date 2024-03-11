@@ -3,6 +3,7 @@ local orgsOrig = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 // Set Adoptium specific defaults here
 local newAdoptiumRepo(name) = orgsOrig.newRepo(name) {
   dependabot_security_updates_enabled: true,
+  private_vulnerability_reporting_enabled: true,
   web_commit_signoff_required: false,
 };
 
