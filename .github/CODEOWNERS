@@ -2,4 +2,4 @@
 *             @adoptium/eclipsefdn-releng
 
 # Otterdog related configurations are also owned by the security team.
-/otterdog/**  @adoptium/eclipsefdn-security @adoptium/eclipsefdn-releng
+/otterdog/**  @adoptium/eclipsefdn-security
