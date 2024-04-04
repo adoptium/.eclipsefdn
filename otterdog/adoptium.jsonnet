@@ -56,7 +56,6 @@ orgs.newOrg('adoptium') {
     blog: "https://adoptium.net",
     description: "The Adoptium Working Group promotes and supports high-quality runtimes and associated technology for use across the Java ecosystem",
     name: "Eclipse Adoptium",
-    readers_can_create_discussions: true,
     security_managers+: [
       "adoptium-aqavit-project-leads",
       "adoptium-project-leads",
