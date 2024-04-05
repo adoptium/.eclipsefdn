@@ -580,6 +580,7 @@ orgs.newOrg('adoptium') {
     },
     newMirrorRepo('jdk21u') {},
     newMirrorRepo('jdk22') {},
+    newMirrorRepo('jdk22u') {},
     newMirrorRepo('jdk8u') {},
     newMirrorRepo('jdk8u_hg') {
       archived: true,
