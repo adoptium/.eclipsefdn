@@ -134,7 +134,6 @@ orgs.newOrg('adoptium') {
       ],
     },
     orgs.newRepo('adoptium-support') {
-      default_branch: "master",
       description: "For end-user problems reported with our binary distributions",
       has_discussions: true,
     },
