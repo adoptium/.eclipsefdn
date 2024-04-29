@@ -154,6 +154,11 @@ orgs.newOrg('adoptium') {
           ],
         },
       ],
+      secrets: [
+        orgs.newRepoSecret('CODECOV_TOKEN') {
+          value: "pass:bots/adoptium/codecov/adoptium-net-token",
+        },
+      ],
     },
     orgs.newRepo('adoptium.net-redesign') {
       allow_auto_merge: true,
