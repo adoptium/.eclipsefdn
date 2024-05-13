@@ -743,6 +743,11 @@ orgs.newOrg('adoptium') {
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main'),
       ],
+      secrets: [
+        orgs.newRepoSecret('NIST_NVD_TOKEN') {
+          value: "pass:bots/adoptium/nist/nist-nvd-api-token",
+        },
+      ],
     },
     orgs.newRepo('devkit-binaries') {
       allow_merge_commit: true,
