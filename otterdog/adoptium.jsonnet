@@ -524,6 +524,18 @@ orgs.newOrg('adoptium') {
         orgs.newRepoSecret('DOCKER_TOKEN') {
           value: "pass:bots/adoptium/docker.com/token",
         },
+        orgs.newRepoSecret('ORKA_VPN_USERNAME') {
+          value: "pass:bots/adoptium/macstadium.com/orka-vpn-username",
+        },
+        orgs.newRepoSecret('ORKA_VPN_PASSWORD') {
+          value: "pass:bots/adoptium/macstadium.com/orka-vpn-password",
+        },
+        orgs.newRepoSecret('ORKA_VPN_SERVER_CERT') {
+          value: "pass:bots/adoptium/macstadium.com/orka-vpn-cert",
+        },
+        orgs.newRepoSecret('ORKA_TOKEN') {
+          value: "pass:bots/adoptium/macstadium.com/orka-token",
+        },
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
