@@ -524,6 +524,15 @@ orgs.newOrg('adoptium') {
         orgs.newRepoSecret('DOCKER_TOKEN') {
           value: "pass:bots/adoptium/docker.com/token",
         },
+        orgs.newRepoSecret('ORKA_VPN_USERNAME') {
+          value: "pass:bots/adoptium/orka/username",
+        },
+        orgs.newRepoSecret('ORKA_VPN_PASSWORD') {
+          value: "pass:bots/adoptium/orka/password",
+        },
+        orgs.newRepoSecret('ORKA_VPN_SERVER_CERT') {
+          value: "pass:bots/adoptium/orka/cert",
+        },
         orgs.newRepoSecret('ORKA_TOKEN') {
           value: "pass:bots/adoptium/orka/token",
         },
