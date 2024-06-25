@@ -524,6 +524,9 @@ orgs.newOrg('adoptium') {
         orgs.newRepoSecret('DOCKER_TOKEN') {
           value: "pass:bots/adoptium/docker.com/token",
         },
+        orgs.newRepoSecret('ORKA_TOKEN') {
+          value: "pass:bots/adoptium/orka/token",
+        },
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
