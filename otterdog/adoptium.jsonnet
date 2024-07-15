@@ -64,17 +64,6 @@ orgs.newOrg('adoptium') {
     twitter_username: "adoptium",
     web_commit_signoff_required: false,
   },
-  webhooks+: [
-    orgs.newOrgWebhook('https://app.codacy.com/2.0/events/gh/organization') {
-      content_type: "json",
-      events+: [
-        "meta",
-        "organization",
-        "repository"
-      ],
-      secret: "********",
-    },
-  ],
   secrets+: [
     orgs.newOrgSecret('ADOPTIUM_AQAVIT_BOT_TOKEN') {
       value: "pass:bots/adoptium.aqavit/github.com/project-token",
@@ -458,27 +447,9 @@ orgs.newOrg('adoptium') {
         "documentation",
         "hacktoberfest"
       ],
-      webhooks: [
-        orgs.newRepoWebhook('https://app.codacy.com/events/github/3b0e019a32bb4307a776e60cff5b031c') {
-          content_type: "json",
-          events+: [
-            "pull_request",
-            "push"
-          ],
-        },
-      ],
     },
     orgs.newRepo('documentation-services') {
       archived: true,
-      webhooks: [
-        orgs.newRepoWebhook('https://app.codacy.com/events/github/695d0c3446bd42d58c11a7ee026d9196') {
-          content_type: "json",
-          events+: [
-            "pull_request",
-            "push"
-          ],
-        },
-      ],
     },
     orgs.newRepo('emt4j') {
       allow_merge_commit: true,
@@ -703,34 +674,6 @@ orgs.newOrg('adoptium') {
         "hacktoberfest",
         "shell-script",
         "temurin"
-      ],
-      webhooks: [
-        orgs.newRepoWebhook('https://api.codacy.com/events/github/c7be1d760de3418f836fcfefa494c486') {
-          content_type: "json",
-          events+: [
-            "pull_request",
-            "push"
-          ],
-        },
-        orgs.newRepoWebhook('https://ci.adoptium.net/github-webhook/') {
-          events+: [
-            "commit_comment",
-            "issue_comment",
-            "issues",
-            "label",
-            "pull_request",
-            "pull_request_review",
-            "pull_request_review_comment",
-            "push"
-          ],
-        },
-        orgs.newRepoWebhook('https://ci.adoptium.net/ghprbhook/') {
-          events+: [
-            "issue_comment",
-            "pull_request"
-          ],
-          secret: "pass:bots/adoptium/github.com/ci-webhook-secret",
-        },
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
