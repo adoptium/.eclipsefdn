@@ -417,6 +417,14 @@ orgs.newOrg('adoptium') {
           ],
         },
       ],
+      secrets: [
+        orgs.newRepoSecret('DOCKERHUB_USERNAME') {
+          value: "pass:bots/adoptium/docker.com/username",
+        },
+        orgs.newRepoSecret('DOCKERHUB_PASSWORD') {
+          value: "pass:bots/adoptium/docker.com/token",
+        }
+      ],
     },
     orgs.newRepo('dash.adoptium.net') {
       allow_auto_merge: true,
