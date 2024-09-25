@@ -422,7 +422,7 @@ orgs.newOrg('adoptium') {
           value: "pass:bots/adoptium/docker.com/username",
         },
         orgs.newRepoSecret('DOCKERHUB_PASSWORD') {
-          value: "pass:bots/adoptium/docker.com/token",
+          value: "pass:bots/adoptium/docker.com/api-token",
         }
       ],
     },
@@ -501,7 +501,7 @@ orgs.newOrg('adoptium') {
           value: "pass:bots/adoptium/docker.com/username",
         },
         orgs.newRepoSecret('DOCKER_TOKEN') {
-          value: "pass:bots/adoptium/docker.com/token",
+          value: "pass:bots/adoptium/docker.com/api-token",
         },
         orgs.newRepoSecret('ORKA_VPN_USERNAME') {
           value: "pass:bots/adoptium/macstadium.com/orka-vpn-username",
