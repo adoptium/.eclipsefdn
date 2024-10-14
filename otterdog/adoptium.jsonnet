@@ -208,6 +208,9 @@ orgs.newOrg('adoptium') {
         orgs.newRepoSecret('AZURE_TENANT_ID') {
           value: "pass:bots/adoptium/azure/azure-tenant-id",
         },
+        orgs.newRepoSecret('DIGITALOCEAN_ACCESS_TOKEN') {
+          value: "pass:bots/adoptium/digitalocean.com/access-token",
+        },
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('production') {
@@ -358,6 +361,10 @@ orgs.newOrg('adoptium') {
         "java",
         "performance"
       ],
+    },
+    orgs.newRepo('secrets') {
+      description: "The Secrets Repo for Eclipse Adoptium",
+      private: true,
     },
     orgs.newRepo('ci-jenkins-pipelines') {
       allow_auto_merge: true,
