@@ -11,7 +11,19 @@ local orgs = (import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet') + {
   newRepo::newAdoptiumRepo
 };
 
-local newMirrorRepo(repoName) = orgs.newRepo(repoName) {
+local newTemurinRepo(repoName) = orgs.newRepo(repoName) {
+  custom_properties+: {
+    eclipse_project: "adoptium.temurin",
+  },
+};
+
+local newAQAvitRepo(repoName) = orgs.newRepo(repoName) {
+  custom_properties+: {
+    eclipse_project: "adoptium.aqavit",
+  },
+};
+
+local newMirrorRepo(repoName) = newTemurinRepo(repoName) {
   allow_merge_commit: true,
   allow_update_branch: false,
   auto_init: false,
@@ -41,7 +53,7 @@ local extractVersion(name) =
   else
     "unknown";
 
-local newBinaryRepo(repoName) = orgs.newRepo(repoName) {
+local newBinaryRepo(repoName) = newTemurinRepo(repoName) {
   description: "Temurin %s binaries" % [extractVersion(repoName)],
   dependabot_alerts_enabled: false,
   dependabot_security_updates_enabled: false,
@@ -63,6 +75,14 @@ orgs.newOrg('adoptium') {
     ],
     twitter_username: "adoptium",
     web_commit_signoff_required: false,
+    custom_properties+: [
+      orgs.newCustomProperty('eclipse_project') {
+        default_value: "adoptium",
+        description: "The Eclipse project this repository is associated with",
+        required: true,
+        value_type: "string",
+      },
+    ],
   },
   secrets+: [
     orgs.newOrgSecret('ADOPTIUM_AQAVIT_BOT_TOKEN') {
@@ -91,14 +111,17 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('Incubator') {
       allow_merge_commit: true,
       description: "Adoptium Incubator project",
+      custom_properties+: {
+        eclipse_project: "adoptium.incubator",
+      },
     },
-    orgs.newRepo('STF') {
+    newAQAvitRepo('STF') {
       allow_update_branch: false,
       default_branch: "master",
       delete_branch_on_merge: false,
       description: "The System Test Framework for executing https://github.com/adoptium/aqa-systemtest",
     },
-    orgs.newRepo('TKG') {
+    newAQAvitRepo('TKG') {
       allow_merge_commit: true,
       allow_update_branch: false,
       default_branch: "master",
@@ -122,7 +145,7 @@ orgs.newOrg('adoptium') {
         "temurin"
       ],
     },
-    orgs.newRepo('adoptium-support') {
+    newTemurinRepo('adoptium-support') {
       description: "For end-user problems reported with our binary distributions",
       has_discussions: true,
     },
@@ -277,19 +300,19 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
-    orgs.newRepo('aqa-systemtest') {
+    newAQAvitRepo('aqa-systemtest') {
       allow_update_branch: false,
       default_branch: "master",
       delete_branch_on_merge: false,
       description: "Java load testing and other full system application tests",
     },
-    orgs.newRepo('aqa-test-tools') {
+    newAQAvitRepo('aqa-test-tools') {
       allow_update_branch: false,
       default_branch: "master",
       delete_branch_on_merge: false,
       description: "Home of Test Results Summary Service (TRSS) and PerfNext.  These tools are designed to improve our ability to monitor and triage tests at the Adoptium project.  The code is generic enough that it is extensible for use by any project that needs to monitor multiple CI servers and aggregate their results.",
     },
-    orgs.newRepo('aqa-tests') {
+    newAQAvitRepo('aqa-tests') {
       allow_update_branch: false,
       default_branch: "master",
       delete_branch_on_merge: false,
@@ -343,13 +366,13 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
-    orgs.newRepo('build-jdk') {
+    newTemurinRepo('build-jdk') {
       allow_merge_commit: true,
       allow_update_branch: false,
       default_branch: "master",
       description: "Github action for building JDKs that utilizes the build scripts from the openjdk-build repo",
     },
-    orgs.newRepo('bumblebench') {
+    newAQAvitRepo('bumblebench') {
       allow_update_branch: false,
       default_branch: "master",
       description: "A microbenchmarking test framework for Eclipse Adoptium",
@@ -364,7 +387,7 @@ orgs.newOrg('adoptium') {
       private: true,
       allow_forking: false,
     },
-    orgs.newRepo('ci-jenkins-pipelines') {
+    newTemurinRepo('ci-jenkins-pipelines') {
       allow_auto_merge: true,
       default_branch: "master",
       description: "jenkins pipeline build scripts",
@@ -399,7 +422,7 @@ orgs.newOrg('adoptium') {
         orgs.newBranchProtectionRule('master'),
       ],
     },
-    orgs.newRepo('containers') {
+    newTemurinRepo('containers') {
       allow_auto_merge: true,
       description: "Repo containing the dockerfiles and scripts to produce the official eclipse-temurin containers.",
       has_wiki: false,
@@ -465,8 +488,11 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: true,
       default_branch: "master",
       description: "Eclipse Migration Toolkit for Java",
+      custom_properties+: {
+        eclipse_project: "adoptium.emt4j",
+      },
     },
-    orgs.newRepo('github-release-scripts') {
+    newTemurinRepo('github-release-scripts') {
       allow_auto_merge: true,
       default_branch: "master",
       description: "Scripts for release artefacts to GitHub releases",
@@ -477,7 +503,7 @@ orgs.newOrg('adoptium') {
         orgs.newBranchProtectionRule('master'),
       ],
     },
-    orgs.newRepo('infrastructure') {
+    newTemurinRepo('infrastructure') {
       default_branch: "master",
       description: "This repo contains all information about machine maintenance.",
       topics+: [
@@ -522,7 +548,7 @@ orgs.newOrg('adoptium') {
         orgs.newBranchProtectionRule('master'),
       ],
     },
-    orgs.newRepo('installer') {
+    newTemurinRepo('installer') {
       allow_auto_merge: true,
       default_branch: "master",
       description: "Installer scripts for Eclipse Temurin binaries",
@@ -585,7 +611,7 @@ orgs.newOrg('adoptium') {
     newMirrorRepo('jdk8u_hg') {
       archived: true,
     },
-    orgs.newRepo('jenkins-helper') {
+    newTemurinRepo('jenkins-helper') {
       default_branch: "master",
       description: "Jenkins Node helper API and helper jobs ",
       topics+: [
@@ -597,6 +623,9 @@ orgs.newOrg('adoptium') {
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
+      custom_properties+: {
+        eclipse_project: "adoptium.temurin",
+      },
     },
     orgs.newRepo('jmc-build') {
       allow_merge_commit: true,
@@ -613,8 +642,11 @@ orgs.newOrg('adoptium') {
           value: "pass:bots/adoptium/artifactory/username",
         },
       ],
+      custom_properties+: {
+        eclipse_project: "adoptium.mc",
+      },
     },
-    orgs.newRepo('marketplace-data') {
+    newTemurinRepo('marketplace-data') {
       allow_auto_merge: true,
       allow_merge_commit: true,
       description: "The official source of Marketplace data (JSON) for feeding Eclipse Temurin binaries to the Marketplace API 💾",
@@ -634,13 +666,16 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
-    orgs.newRepo('mirror-scripts') {
+    newTemurinRepo('mirror-scripts') {
       default_branch: "master",
       description: "OpenJDK source mirroring scripts used by",
       homepage: "https://ci.adoptium.net/view/git-mirrors/job/git-mirrors/job/adoptium/",
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
       ],
+      custom_properties+: {
+        eclipse_project: "adoptium.temurin",
+      },
     },
     orgs.newRepo('obsolete---adoptium.net') {
       archived: true,
@@ -653,7 +688,7 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
-    orgs.newRepo('openj9-systemtest') {
+    newAQAvitRepo('openj9-systemtest') {
       allow_merge_commit: true,
       allow_update_branch: false,
       default_branch: "master",
@@ -675,7 +710,7 @@ orgs.newOrg('adoptium') {
         },
       ],
     },    
-    orgs.newRepo('run-aqa') {
+    newAQAvitRepo('run-aqa') {
       allow_merge_commit: true,
       default_branch: "master",
       description: "Repository for the Github Action that enables the running of the Adoptium Quality Assurance (AQA) tests",
@@ -684,7 +719,7 @@ orgs.newOrg('adoptium') {
         "aqa-tests"
       ],
     },
-    orgs.newRepo('temurin') {
+    newTemurinRepo('temurin') {
       allow_auto_merge: true,
       description: "Eclipse Temurin™ project assets",
       has_wiki: false,
@@ -695,7 +730,7 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
-    orgs.newRepo('temurin-build') {
+    newTemurinRepo('temurin-build') {
       allow_auto_merge: true,
       default_branch: "master",
       description: "Eclipse Temurin™ build scripts - common across all releases/versions",
@@ -712,7 +747,7 @@ orgs.newOrg('adoptium') {
         orgs.newBranchProtectionRule('master'),
       ],
     },
-    orgs.newRepo('temurin-cpe-generator') {
+    newTemurinRepo('temurin-cpe-generator') {
       allow_auto_merge: true,
       description: "A tool to generate NIST CPE directory entries for Eclipse Temurin using the Adoptium API.",
       homepage: "https://adoptium.net/temurin",
@@ -722,7 +757,7 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
-    orgs.newRepo('temurin-vdr-generator') {
+    newTemurinRepo('temurin-vdr-generator') {
       allow_auto_merge: true,
       description: "Scripts for generating Vulnerability Disclosure Reports",
       topics+: [
@@ -737,7 +772,7 @@ orgs.newOrg('adoptium') {
         },
       ],
     },
-    orgs.newRepo('devkit-binaries') {
+    newTemurinRepo('devkit-binaries') {
       allow_merge_commit: true,
       allow_update_branch: false,
       delete_branch_on_merge: false,
