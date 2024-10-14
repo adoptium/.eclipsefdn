@@ -362,6 +362,7 @@ orgs.newOrg('adoptium') {
     orgs.newRepo('secrets') {
       description: "The Secrets Repo for Eclipse Adoptium",
       private: true,
+      allow_forking: false,
     },
     orgs.newRepo('ci-jenkins-pipelines') {
       allow_auto_merge: true,
