@@ -216,14 +216,8 @@ orgs.newOrg('adoptium') {
         allowed_actions: "selected",
       },
       secrets: [
-        orgs.newRepoSecret('AZURE_CLIENT_ID') {
-          value: "pass:bots/adoptium/azure/azure-client-id",
-        },
         orgs.newRepoSecret('AZURE_CLIENT_ID_OIDC') {
           value: "pass:bots/adoptium/azure/azure-client-id-oidc",
-        },
-        orgs.newRepoSecret('AZURE_CLIENT_SECRET') {
-          value: "pass:bots/adoptium/azure/azure-client-secret",
         },
         orgs.newRepoSecret('AZURE_SUBSCRIPTION_ID') {
           value: "pass:bots/adoptium/azure/azure-subscription-id",
@@ -269,14 +263,8 @@ orgs.newOrg('adoptium') {
         allowed_actions: "selected",
       },
       secrets: [
-        orgs.newRepoSecret('AZURE_CLIENT_ID') {
-          value: "pass:bots/adoptium/azure/azure-client-id",
-        },
         orgs.newRepoSecret('AZURE_CLIENT_ID_OIDC') {
           value: "pass:bots/adoptium/azure/azure-client-id-oidc",
-        },
-        orgs.newRepoSecret('AZURE_CLIENT_SECRET') {
-          value: "pass:bots/adoptium/azure/azure-client-secret",
         },
         orgs.newRepoSecret('AZURE_SUBSCRIPTION_ID') {
           value: "pass:bots/adoptium/azure/azure-subscription-id",
