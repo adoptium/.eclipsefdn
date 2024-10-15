@@ -535,10 +535,10 @@ orgs.newOrg('adoptium') {
           value: "pass:bots/adoptium/azure/azure-client-id-oidc-infra",
         },
         orgs.newRepoSecret('AZURE_SUBSCRIPTION_ID') {
-          value: "pass:bots/adoptium/azure/azure-subscription-id-infra",
+          value: "pass:bots/adoptium/azure/azure-subscription-id",
         },
         orgs.newRepoSecret('AZURE_TENANT_ID') {
-          value: "pass:bots/adoptium/azure/azure-tenant-id-infra",
+          value: "pass:bots/adoptium/azure/azure-tenant-id",
         },
       ],
       branch_protection_rules: [
