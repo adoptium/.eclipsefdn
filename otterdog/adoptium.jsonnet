@@ -531,6 +531,15 @@ orgs.newOrg('adoptium') {
         orgs.newRepoSecret('ORKA_TOKEN') {
           value: "pass:bots/adoptium/macstadium.com/orka-token",
         },
+        orgs.newRepoSecret('AZURE_CLIENT_ID_OIDC') {
+          value: "pass:bots/adoptium/azure/azure-client-id-oidc-infra",
+        },
+        orgs.newRepoSecret('AZURE_SUBSCRIPTION_ID') {
+          value: "pass:bots/adoptium/azure/azure-subscription-id-infra",
+        },
+        orgs.newRepoSecret('AZURE_TENANT_ID') {
+          value: "pass:bots/adoptium/azure/azure-tenant-id-infra",
+        },
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
