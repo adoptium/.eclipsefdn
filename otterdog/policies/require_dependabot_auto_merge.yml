@@ -5,7 +5,6 @@ config:
     - path: .github/workflows/dependabot-auto-merge.yml
       repo_selector:
         name_pattern:
-          - .github
           - temurin-build
           - containers
           - installer
@@ -16,7 +15,6 @@ config:
           - adoptium.net-redesign
           - temurin-vdr-generator
           - dash.adoptium.net
-          - blog.adoptium.net
       content: |
         # This is a templated file from https://github.com/adoptium/.eclipsefdn/tree/main/otterdog/policies/require_dependabot_auto_merge.yml
         name: Dependabot auto-merge
