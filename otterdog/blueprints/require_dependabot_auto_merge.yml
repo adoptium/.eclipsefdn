@@ -1,27 +1,27 @@
 name: Require dependabot-auto-merge.yml
 type: required_file
 config:
+  repo_selector:
+    name_pattern:
+      - temurin-build
+      - containers
+      - installer
+      - ci-jenkins-pipelines
+      - adoptium.net
+      - github-release-scripts
+      - marketplace-data
+      - adoptium.net-redesign
+      - temurin-vdr-generator
+      - dash.adoptium.net
   files:
     - path: .github/workflows/dependabot-auto-merge.yml
-      repo_selector:
-        name_pattern:
-          - temurin-build
-          - containers
-          - installer
-          - ci-jenkins-pipelines
-          - adoptium.net
-          - github-release-scripts
-          - marketplace-data
-          - adoptium.net-redesign
-          - temurin-vdr-generator
-          - dash.adoptium.net
       content: |
         # This is a templated file from https://github.com/adoptium/.eclipsefdn/tree/main/otterdog/policies/require_dependabot_auto_merge.yml
         name: Dependabot auto-merge
         on: pull_request_target
-  
+
         permissions: read-all
-  
+
         jobs:
           dependabot:
             permissions:
