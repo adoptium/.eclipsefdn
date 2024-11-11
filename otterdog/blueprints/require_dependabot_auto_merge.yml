@@ -1,3 +1,4 @@
+id: require-dependabot-auto-merge
 name: Require dependabot-auto-merge.yml
 type: required_file
 config:
