@@ -6,7 +6,7 @@ type: scorecard_integration
 config:
   repo_selector:
     name_pattern:
-      - otterdog
+      - temurin-build
   workflow_name: scorecard-analysis.yml
   workflow_content: |
     name: Scorecard analysis workflow
