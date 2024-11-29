@@ -408,6 +408,9 @@ orgs.newOrg('adoptium') {
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
+        orgs.newBranchProtectionRule('v20*') {
+          required_approving_review_count: 2,
+        },
       ],
     },
     newTemurinRepo('containers') {
@@ -619,6 +622,9 @@ orgs.newOrg('adoptium') {
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
+        orgs.newBranchProtectionRule('v20*') {
+          required_approving_review_count: 2,
+        },
       ],
       custom_properties+: {
         eclipse_project: "adoptium.temurin",
@@ -742,6 +748,9 @@ orgs.newOrg('adoptium') {
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
+        orgs.newBranchProtectionRule('v20*') {
+          required_approving_review_count: 2,
+        },
       ],
     },
     newTemurinRepo('temurin-cpe-generator') {
