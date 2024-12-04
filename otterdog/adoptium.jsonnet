@@ -118,14 +118,12 @@ orgs.newOrg('adoptium') {
     newAQAvitRepo('STF') {
       allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: true,
       description: "The System Test Framework for executing https://github.com/adoptium/aqa-systemtest",
     },
     newAQAvitRepo('TKG') {
       allow_merge_commit: true,
       allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: true,
       description: "TestKitGen (TKG)",
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
@@ -291,19 +289,16 @@ orgs.newOrg('adoptium') {
     newAQAvitRepo('aqa-systemtest') {
       allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: true,
       description: "Java load testing and other full system application tests",
     },
     newAQAvitRepo('aqa-test-tools') {
       allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: true,
       description: "Home of Test Results Summary Service (TRSS) and PerfNext.  These tools are designed to improve our ability to monitor and triage tests at the Adoptium project.  The code is generic enough that it is extensible for use by any project that needs to monitor multiple CI servers and aggregate their results.",
     },
     newAQAvitRepo('aqa-tests') {
       allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: true,
       description: "Home of test infrastructure for Adoptium builds",
       homepage: "https://adoptium.net/aqavit",
       topics+: [
@@ -695,7 +690,6 @@ orgs.newOrg('adoptium') {
       allow_merge_commit: true,
       allow_update_branch: false,
       default_branch: "master",
-      delete_branch_on_merge: true,
       dependabot_security_updates_enabled: true,
       description: "Long running J9 tests",
       private_vulnerability_reporting_enabled: true,
