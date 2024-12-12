@@ -780,6 +780,9 @@ orgs.newOrg('adoptium') {
       description: "Repository for Adoptium OpenJDK DevKit builds",
       has_issues: false,
     },
+    newTemurinRepo('temurin-attestations') {
+      description: "Eclipse Temurin™ attestations for 3rd party secure supply chain claims",
+    },
     newBinaryRepo('temurin11-binaries') {},
     newBinaryRepo('temurin16-binaries') {},
     newBinaryRepo('temurin17-binaries') {},
