@@ -787,6 +787,9 @@ orgs.newOrg('adoptium') {
     },
     newTemurinRepo('temurin-attestations') {
       description: "Eclipse Temurin™ attestations for 3rd party secure supply chain claims",
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main'),
+      ],
     },
     newBinaryRepo('temurin11-binaries') {},
     newBinaryRepo('temurin16-binaries') {},
