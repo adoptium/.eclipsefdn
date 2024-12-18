@@ -295,6 +295,11 @@ orgs.newOrg('adoptium') {
       allow_update_branch: false,
       default_branch: "master",
       description: "Home of Test Results Summary Service (TRSS) and PerfNext.  These tools are designed to improve our ability to monitor and triage tests at the Adoptium project.  The code is generic enough that it is extensible for use by any project that needs to monitor multiple CI servers and aggregate their results.",
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('master') {
+          required_approving_review_count: 1,
+        },
+      ],
     },
     newAQAvitRepo('aqa-tests') {
       allow_update_branch: false,
