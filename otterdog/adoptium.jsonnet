@@ -63,7 +63,7 @@ local newBinaryRepo(repoName) = newTemurinRepo(repoName) {
   homepage: "https://adoptium.net",
 };
 
-orgs.newOrg('adoptium') {
+orgs.newOrg('adoptium', 'adoptium') {
   settings+: {
     blog: "https://adoptium.net",
     description: "The Adoptium Working Group promotes and supports high-quality runtimes and associated technology for use across the Java ecosystem",
