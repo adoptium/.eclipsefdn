@@ -75,14 +75,6 @@ orgs.newOrg('adoptium', 'adoptium') {
     ],
     twitter_username: "adoptium",
     web_commit_signoff_required: false,
-    custom_properties+: [
-      orgs.newCustomProperty('eclipse_project') {
-        default_value: "adoptium",
-        description: "The Eclipse project this repository is associated with",
-        required: true,
-        value_type: "string",
-      },
-    ],
   },
   secrets+: [
     orgs.newOrgSecret('ADOPTIUM_AQAVIT_BOT_TOKEN') {
