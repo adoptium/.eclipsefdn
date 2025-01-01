@@ -76,6 +76,35 @@ orgs.newOrg('adoptium', 'adoptium') {
     twitter_username: "adoptium",
     web_commit_signoff_required: false,
   },
+  teams+: [
+    orgs.newTeam('adoptium.net') {
+      members+: [
+        "chrisguindon",
+        "gdams"
+      ],
+      privacy: "secret",
+    },
+    orgs.newTeam('adoptium.net-collaborators') {
+      members+: [
+        "adoptium-bot",
+        "chrisguindon",
+        "eclipse-temurin-bot",
+        "gdams",
+        "hendrikebbers",
+        "karianna",
+        "smlambert",
+        "sxa",
+        "tellison",
+        "xavierfacq"
+      ],
+    },
+    orgs.newTeam('eclipsefdn-webdev') {
+      members+: [
+        "chrisguindon"
+      ],
+      privacy: "secret",
+    },
+  ],
   secrets+: [
     orgs.newOrgSecret('ADOPTIUM_AQAVIT_BOT_TOKEN') {
       value: "pass:bots/adoptium.aqavit/github.com/project-token",
