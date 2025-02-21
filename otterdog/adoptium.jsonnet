@@ -307,6 +307,16 @@ orgs.newOrg('adoptium', 'adoptium') {
         },
       ],
     },
+    newAQAvitRepo('aqa-cbt') {
+      allow_update_branch: false,
+      default_branch: "master", 
+      description: "Change-based testing tools that provide an awareness of source code changes and correlate a set of tests to run for best test coverage",
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('master') {
+          required_approving_review_count: 1,
+        },
+      ],      
+    },
     newAQAvitRepo('aqa-systemtest') {
       allow_update_branch: false,
       default_branch: "master",
