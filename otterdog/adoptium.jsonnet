@@ -190,7 +190,7 @@ orgs.newOrg('adoptium', 'adoptium') {
         },
       ],
     },
-    orgs.newRepo('adoptium.net-redesign') {
+    orgs.newRepo('adoptium.net') {
       allow_auto_merge: true,
       description: "Adoptium Website",
       homepage: "https://adoptium.net",
