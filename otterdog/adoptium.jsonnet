@@ -169,7 +169,7 @@ orgs.newOrg('adoptium', 'adoptium') {
       has_discussions: true,
     },
     orgs.newRepo('archive---adoptium.net') {
-      aliases: ['adoptium.net']
+      aliases: ['adoptium.net'],
       archived: true,
       allow_auto_merge: true,
       description: "Development of the website has moved to https://github.com/adoptium/adoptium.net",
