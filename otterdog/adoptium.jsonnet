@@ -168,13 +168,12 @@ orgs.newOrg('adoptium', 'adoptium') {
       description: "For end-user problems reported with our binary distributions",
       has_discussions: true,
     },
-    orgs.newRepo('adoptium.net') {
+    orgs.newRepo('archive---adoptium.net') {
+      aliases: ['adoptium.net'],
+      archived: true,
       allow_auto_merge: true,
-      description: "Adoptium Website",
-      homepage: "https://adoptium.net",
-      topics+: [
-        "hacktoberfest"
-      ],
+      description: "Development of the website has moved to https://github.com/adoptium/adoptium.net",
+      homepage: "https://old.adoptium.net",
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -194,7 +193,7 @@ orgs.newOrg('adoptium', 'adoptium') {
     orgs.newRepo('adoptium.net-redesign') {
       allow_auto_merge: true,
       description: "Adoptium Website",
-      homepage: "https://adoptium-rewrite.netlify.app/",
+      homepage: "https://adoptium.net",
       topics+: [
         "hacktoberfest"
       ],
