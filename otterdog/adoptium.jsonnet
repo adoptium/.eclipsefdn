@@ -169,7 +169,6 @@ orgs.newOrg('adoptium', 'adoptium') {
       has_discussions: true,
     },
     orgs.newRepo('archive---adoptium.net') {
-      aliases: ['adoptium.net'],
       archived: true,
       allow_auto_merge: true,
       description: "Development of the website has moved to https://github.com/adoptium/adoptium.net",
@@ -190,7 +189,8 @@ orgs.newOrg('adoptium', 'adoptium') {
         },
       ],
     },
-    orgs.newRepo('adoptium.net-redesign') {
+    orgs.newRepo('adoptium.net') {
+      aliases: ['adoptium.net-redesign'],
       allow_auto_merge: true,
       description: "Adoptium Website",
       homepage: "https://adoptium.net",
