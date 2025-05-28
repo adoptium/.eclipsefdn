@@ -173,6 +173,9 @@ orgs.newOrg('adoptium', 'adoptium') {
       allow_auto_merge: true,
       description: "Development of the website has moved to https://github.com/adoptium/adoptium.net",
       homepage: "https://old.adoptium.net",
+      topics+: [
+        "hacktoberfest"
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
