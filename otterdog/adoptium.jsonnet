@@ -193,7 +193,6 @@ orgs.newOrg('adoptium', 'adoptium') {
       ],
     },
     orgs.newRepo('adoptium.net') {
-      aliases: ['adoptium.net-redesign'],
       allow_auto_merge: true,
       description: "Adoptium Website",
       homepage: "https://adoptium.net",
@@ -215,6 +214,16 @@ orgs.newOrg('adoptium', 'adoptium') {
           value: "pass:bots/adoptium/codecov/adoptium-redesign-token",
         },
       ],
+    },
+    orgs.newRepo('adoptium.net-next') {
+      allow_auto_merge: true,
+      description: "Adoptium Website (Next.js Rewrite)",
+      homepage: "https://adoptium.net",
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1
+        },
+      ]
     },
     orgs.newRepo('api.adoptium.net') {
       allow_merge_commit: true,
