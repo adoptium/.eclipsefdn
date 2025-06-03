@@ -221,7 +221,7 @@ orgs.newOrg('adoptium', 'adoptium') {
       homepage: "https://adoptium-next.netlify.app",
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
-          requires_strict_status_checks: true,
+          requires_strict_status_checks: false,
           required_approving_review_count: 1,
            required_status_checks+: [
              "Lint Code Base",
