@@ -224,8 +224,14 @@ orgs.newOrg('adoptium', 'adoptium') {
           required_approving_review_count: 1,
            required_status_checks+: [
              "Lint Code Base",
+             "Run CI",
              "netlify:netlify/adoptium-next/deploy-preview"
            ],
+        },
+      ],
+      secrets: [
+        orgs.newRepoSecret('CODECOV_TOKEN') {
+          value: "pass:bots/adoptium/codecov/adoptium-next-token",
         },
       ],
     },
