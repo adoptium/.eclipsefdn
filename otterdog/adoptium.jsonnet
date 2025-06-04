@@ -218,12 +218,16 @@ orgs.newOrg('adoptium', 'adoptium') {
     orgs.newRepo('adoptium.net-next') {
       allow_auto_merge: true,
       description: "Adoptium Website (Next.js Rewrite)",
-      homepage: "https://adoptium.net",
+      homepage: "https://adoptium-next.netlify.app",
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
-          required_approving_review_count: 1
+          required_approving_review_count: 1,
+           required_status_checks+: [
+             "Lint Code Base",
+             "netlify:netlify/adoptium-next/deploy-preview"
+           ],
         },
-      ]
+      ],
     },
     orgs.newRepo('api.adoptium.net') {
       allow_merge_commit: true,
