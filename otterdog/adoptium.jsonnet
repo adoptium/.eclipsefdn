@@ -193,7 +193,7 @@ orgs.newOrg('adoptium', 'adoptium') {
       ],
     },
     orgs.newRepo('archive1---adoptium.net') {
-      aliases: ['adoptium.net']
+      aliases: ['adoptium.net'],
       allow_auto_merge: true,
       description: "Adoptium Website",
       homepage: "https://adoptium.net",
