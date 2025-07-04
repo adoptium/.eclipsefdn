@@ -828,6 +828,9 @@ orgs.newOrg('adoptium', 'adoptium') {
         orgs.newRepoSecret('NIST_NVD_TOKEN') {
           value: "pass:bots/adoptium/nist/nist-nvd-api-token",
         },
+	orgs.newRepoSecret('DEP_TRACK_TOKEN') {
+          value: "pass:bots/adoptium/dependencytrack/dep-track-api-token",
+        },
       ],
     },
     newTemurinRepo('devkit-binaries') {
