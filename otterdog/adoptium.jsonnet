@@ -829,7 +829,7 @@ orgs.newOrg('adoptium', 'adoptium') {
           value: "pass:bots/adoptium/nist/nist-nvd-api-token",
         },
 	orgs.newRepoSecret('DEP_TRACK_TOKEN') {
-          value: "pass:bots/adoptium/dependencytrack/dep-track-api-token",
+          value: "pass:bots/adoptium/sbom.eclipse.org/api-token",
         },
       ],
     },
