@@ -503,15 +503,8 @@ orgs.newOrg('adoptium', 'adoptium') {
     },
     orgs.newRepo('dash.adoptium.net') {
       allow_auto_merge: true,
-      description: "Download tracking dashboard",
-      homepage: "https://dash.adoptium.net/",
-      topics+: [
-        "adoptium",
-        "dashboard",
-        "eclipse",
-        "openjdk",
-        "react"
-      ],
+      description: "Development of this dashboard has moved to https://github.com/adoptium/adoptium.net",
+      homepage: "https://adoptium.net/stats",
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
