@@ -193,13 +193,9 @@ orgs.newOrg('adoptium', 'adoptium') {
       ],
     },
     orgs.newRepo('archive1---adoptium.net') {
-      aliases: ['adoptium.net'],
       allow_auto_merge: true,
-      description: "Adoptium Website",
-      homepage: "https://adoptium.net",
-      topics+: [
-        "hacktoberfest"
-      ],
+      description: "Development of the website has moved to https://github.com/adoptium/adoptium.net",
+      homepage: "https://old.adoptium.net",
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
@@ -219,7 +215,7 @@ orgs.newOrg('adoptium', 'adoptium') {
     orgs.newRepo('adoptium.net-next') {
       allow_auto_merge: true,
       description: "Adoptium Website (Next.js Rewrite)",
-      homepage: "https://adoptium-next.netlify.app",
+      homepage: "https://adoptium.net",
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_approving_review_count: 1,
