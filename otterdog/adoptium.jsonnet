@@ -236,6 +236,11 @@ orgs.newOrg('adoptium', 'adoptium') {
           value: "pass:bots/adoptium/codecov/adoptium-next-token",
         },
       ],
+      environments+: [
+        orgs.newEnvironment('copilot') {
+          wait_timer: 0,
+        },
+      ],
     },
     orgs.newRepo('api.adoptium.net') {
       allow_merge_commit: true,
