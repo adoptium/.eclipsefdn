@@ -502,6 +502,7 @@ orgs.newOrg('adoptium', 'adoptium') {
       ],
     },
     orgs.newRepo('dash.adoptium.net') {
+      archived: true,
       allow_auto_merge: true,
       description: "Development of this dashboard has moved to https://github.com/adoptium/adoptium.net",
       homepage: "https://adoptium.net/stats",
