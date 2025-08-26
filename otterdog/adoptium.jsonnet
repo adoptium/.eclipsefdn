@@ -557,6 +557,7 @@ orgs.newOrg('adoptium', 'adoptium') {
     },
     newTemurinRepo('infrastructure') {
       default_branch: "master",
+      allow_update_branch: false,
       description: "This repo contains all information about machine maintenance.",
       topics+: [
         "ansible",
