@@ -852,8 +852,8 @@ orgs.newOrg('adoptium', 'adoptium') {
       description: "Repository for Adoptium OpenJDK DevKit builds",
       has_issues: false,
     },
-    newTemurinRepo('temurin-attestations') {
-      description: "Eclipse Temurin™ attestations for 3rd party secure supply chain claims",
+    newTemurinRepo('temurin-cdxa') {
+      description: "Eclipse Temurin™ CDXA repository for 3rd party secure supply chain claims",
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main'),
       ],
