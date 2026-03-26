@@ -853,6 +853,7 @@ orgs.newOrg('adoptium', 'adoptium') {
       has_issues: false,
     },
     newTemurinRepo('temurin-cdxa') {
+      aliases: ['temurin-attestations'],
       description: "Eclipse Temurin™ CDXA repository for 3rd party secure supply chain claims",
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main'),
