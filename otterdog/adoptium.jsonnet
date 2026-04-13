@@ -213,8 +213,7 @@ orgs.newOrg('adoptium', 'adoptium') {
         },
       ],
     },
-    orgs.newRepo('adoptium.net') {
-      aliases: ['adoptium.net-next'],
+    orgs.newRepo('adoptium.net') {	
       allow_auto_merge: true,
       description: "Adoptium Website (Next.js Rewrite)",
       homepage: "https://adoptium.net",
@@ -235,6 +234,9 @@ orgs.newOrg('adoptium', 'adoptium') {
         orgs.newRepoSecret('CODECOV_TOKEN') {
           value: "pass:bots/adoptium/codecov/adoptium-next-token",
         },
+        orgs.newRepoSecret('COPILOT_GITHUB_TOKEN') {
+          value: "pass:bots/adoptium/github.com/project-token",
+        },		
       ],
       environments+: [
         orgs.newEnvironment('copilot') {
