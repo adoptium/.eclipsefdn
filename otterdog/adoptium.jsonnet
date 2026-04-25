@@ -496,7 +496,7 @@ orgs.newOrg('adoptium', 'adoptium') {
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
           required_status_checks+: [
-            "conclusion"
+            "Test PR Conclusion"
           ],
         },
       ],
