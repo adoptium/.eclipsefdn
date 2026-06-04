@@ -243,6 +243,7 @@ orgs.newOrg('adoptium', 'adoptium') {
       ],
     },
     orgs.newRepo('api.adoptium.net') {
+	  allow_auto_merge: true,
       allow_merge_commit: true,
       allow_squash_merge: false,
       allow_update_branch: false,
@@ -291,6 +292,7 @@ orgs.newOrg('adoptium', 'adoptium') {
       ],
     },
     orgs.newRepo('marketplace-api.adoptium.net') {
+	  allow_auto_merge: true,
       allow_merge_commit: true,
       allow_squash_merge: false,
       allow_update_branch: false,
