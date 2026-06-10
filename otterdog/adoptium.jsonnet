@@ -7,8 +7,14 @@ local newAdoptiumRepo(name) = orgsOrig.newRepo(name) {
   web_commit_signoff_required: false,
 };
 
+// Set Adoptium specific default branch protection rules here
+local newAdoptiumBranchProtectionRule(branch) = orgsOrig.newBranchProtectionRule(branch) {
+  dismisses_stale_reviews: true,
+};
+
 local orgs = (import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet') + {
-  newRepo::newAdoptiumRepo
+  newRepo::newAdoptiumRepo,
+  newBranchProtectionRule::newAdoptiumBranchProtectionRule
 };
 
 local newTemurinRepo(repoName) = orgs.newRepo(repoName) {
