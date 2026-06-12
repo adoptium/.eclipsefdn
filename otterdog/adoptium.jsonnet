@@ -881,6 +881,7 @@ orgs.newOrg('adoptium', 'adoptium') {
     newBinaryRepo('temurin25-binaries') {},
     newBinaryRepo('temurin26-binaries') {},
     newBinaryRepo('temurin27-binaries') {},
+    newBinaryRepo('temurin28-binaries') {},
     newBinaryRepo('temurin8-binaries') {},
     newBinaryRepo('temurin-linux-pkg-sources') {},
   ],
