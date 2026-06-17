@@ -868,6 +868,12 @@ orgs.newOrg('adoptium', 'adoptium') {
         orgs.newBranchProtectionRule('main'),
       ],
     },
+    newTemurinRepo('log-analysis') {
+      description: "Tools for analyzing infrastructure logs for increased security and resource usage optimization",
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main'),
+      ],
+    },
     newBinaryRepo('temurin11-binaries') {},
     newBinaryRepo('temurin16-binaries') {},
     newBinaryRepo('temurin17-binaries') {},
