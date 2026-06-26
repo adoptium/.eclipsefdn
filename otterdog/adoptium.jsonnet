@@ -869,9 +869,12 @@ orgs.newOrg('adoptium', 'adoptium') {
       ],
     },
     newTemurinRepo('log-analysis') {
+      allow_merge_commit: true,
       description: "Tools for analyzing infrastructure logs for increased security and resource usage optimization",
       branch_protection_rules: [
-        orgs.newBranchProtectionRule('main'),
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+        },
       ],
     },
     newBinaryRepo('temurin11-binaries') {},
