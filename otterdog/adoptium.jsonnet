@@ -488,6 +488,34 @@ orgs.newOrg('adoptium', 'adoptium') {
         },
       ],
     },
+    newTemurinRepo('ci-adoptium-pipelines') {
+      allow_auto_merge: true,
+      default_branch: "main",
+      description: "Adoptium CI-agnostic modular OpenJDK build pipelines implementation",
+      topics+: [
+        "jenkins",
+        "pipeline"
+      ],
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+        },
+      ],
+    },
+    newTemurinRepo('ci-temurin-config') {
+      allow_auto_merge: true,
+      default_branch: "main",
+      description: "Eclipse Temurin configuration repository for CI-agnostic OpenJDK build pipelines",
+      topics+: [
+        "jenkins",
+        "pipeline"
+      ],
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+        },
+      ],
+    },
     newTemurinRepo('containers') {
       allow_auto_merge: true,
       description: "Repo containing the dockerfiles and scripts to produce the official eclipse-temurin containers.",
