@@ -104,6 +104,18 @@ orgs.newOrg('adoptium', 'adoptium') {
         "xavierfacq"
       ],
     },
+    orgs.newTeam('adoptium-wg-collaborators') {
+      members+: [
+        "TanjaObradovic",
+        "karianna",
+        "kennethshackleton",
+        "tkiriyama",
+        "steelhead31",
+        "kazumura",
+        "gdams",
+        "smlambert"
+      ],
+    },
     orgs.newTeam('eclipsefdn-webdev') {
       members+: [
         "chrisguindon"
@@ -449,6 +461,10 @@ orgs.newOrg('adoptium', 'adoptium') {
       description: "The Secrets Repo for Eclipse Adoptium",
       private: true,
       allow_forking: false,
+    },
+    orgs.newRepo('adoptium-wg') {
+      description: "A private repository for use by the Adoptium Working Group",
+      private: true,
     },
     newTemurinRepo('ci-jenkins-pipelines') {
       allow_auto_merge: true,
