@@ -465,6 +465,7 @@ orgs.newOrg('adoptium', 'adoptium') {
     orgs.newRepo('adoptium-wg') {
       description: "A private repository for use by the Adoptium Working Group",
       private: true,
+      skip_non_organization_members: false,
     },
     newTemurinRepo('ci-jenkins-pipelines') {
       allow_auto_merge: true,
