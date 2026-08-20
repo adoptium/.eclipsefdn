@@ -393,6 +393,7 @@ orgs.newOrg('adoptium', 'adoptium') {
       default_branch: "master",
       description: "Home of test infrastructure for Adoptium builds",
       homepage: "https://adoptium.net/aqavit",
+      gh_pages_build_type: "workflow",
       topics+: [
         "openjdk-tests",
         "tests"
