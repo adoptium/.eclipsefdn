@@ -104,6 +104,19 @@ orgs.newOrg('adoptium', 'adoptium') {
         "xavierfacq"
       ],
     },
+    orgs.newTeam('adoptium-wg-collaborators') {
+      members+: [
+        "TanjaObradovic",
+        "karianna",
+        "kennethshackleton",
+        "tkiriyama",
+        "steelhead31",
+        "kazumura",
+        "gdams",
+        "smlambert"
+      ],
+      skip_non_organization_members: false,
+    },
     orgs.newTeam('eclipsefdn-webdev') {
       members+: [
         "chrisguindon"
@@ -381,6 +394,7 @@ orgs.newOrg('adoptium', 'adoptium') {
       default_branch: "master",
       description: "Home of test infrastructure for Adoptium builds",
       homepage: "https://adoptium.net/aqavit",
+      gh_pages_build_type: "disabled",
       topics+: [
         "openjdk-tests",
         "tests"
@@ -447,6 +461,11 @@ orgs.newOrg('adoptium', 'adoptium') {
     },
     orgs.newRepo('secrets') {
       description: "The Secrets Repo for Eclipse Adoptium",
+      private: true,
+      allow_forking: false,
+    },
+    orgs.newRepo('adoptium-wg') {
+      description: "A private repository for use by the Adoptium Working Group",
       private: true,
       allow_forking: false,
     },
