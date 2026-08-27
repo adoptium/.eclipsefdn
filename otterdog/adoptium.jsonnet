@@ -115,6 +115,7 @@ orgs.newOrg('adoptium', 'adoptium') {
         "gdams",
         "smlambert"
       ],
+      skip_non_organization_members: false,
     },
     orgs.newTeam('eclipsefdn-webdev') {
       members+: [
@@ -466,7 +467,6 @@ orgs.newOrg('adoptium', 'adoptium') {
     orgs.newRepo('adoptium-wg') {
       description: "A private repository for use by the Adoptium Working Group",
       private: true,
-      skip_non_organization_members: false,
       allow_forking: false,
     },
     newTemurinRepo('ci-jenkins-pipelines') {
