@@ -404,7 +404,7 @@ orgs.newOrg('adoptium', 'adoptium') {
         orgs.newBranchProtectionRule('v*-release') {
           required_approving_review_count: 1,
         },
-        orgs.newBranchProtectionRule('cherry-pick-*') {
+        orgs.newBranchProtectionRule('cherry-pick-[0-9]*-to-v[0-9]*-release') {
           allows_deletions: true,
           allows_force_pushes: false,
           restricts_pushes: true,
