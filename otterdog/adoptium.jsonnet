@@ -401,8 +401,17 @@ orgs.newOrg('adoptium', 'adoptium') {
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('master'),
-        orgs.newBranchProtectionRule('*-release') {
+        orgs.newBranchProtectionRule('v*-release') {
           required_approving_review_count: 1,
+        },
+        orgs.newBranchProtectionRule('cherry-pick-[0-9]*-to-v[0-9]*-release') {
+          allows_deletions: true,
+          allows_force_pushes: false,
+          restricts_pushes: true,
+          blocks_creations: true,
+          push_restrictions: [
+            "github-actions[bot]",
+          ],
         },
       ],
     },
