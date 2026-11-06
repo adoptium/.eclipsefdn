@@ -540,6 +540,7 @@ orgs.newOrg('adoptium', 'adoptium') {
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
+          dismisses_stale_reviews: false,
           required_status_checks+: [
             "Test PR Conclusion"
           ],
